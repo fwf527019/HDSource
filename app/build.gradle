@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.2"
+    defaultConfig {
+        applicationId "com.cdhd"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    testCompile 'junit:junit:4.12'
+
+    //android相册
+    compile 'com.yanzhenjie:album:1.0.0' //http://blog.csdn.net/yanzhenjie1003
+
+    //权限管理
+    compile 'com.yanzhenjie:permission:1.0.8'
+    //稳定版 刷新框架（）
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
+//没有使用特殊Header，可以不加这行https://github.com/scwang90/SmartRefreshLayout
+    //网络框架
+    compile 'com.zhy:okhttputils:2.6.2'
+    //黄油刀
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //史上最简单的侧滑 加载RecyclerAdapter
+    //http://blog.csdn.net/yhaolpz/article/details/77891594
+    compile 'com.github.yhaolpz:SlideAdapter:1.0.0'
+    compile 'com.android.support:design:25.1.0'
+    //二维码
+    compile 'cn.yipianfengye.android:zxing-library:2.1'
+    //fresco
+    compile 'com.facebook.fresco:fresco:1.2.0'
+    //android相册
+    compile 'com.yanzhenjie:album:1.0.0' //http://blog.csdn.net/yanzhenjie1003
+
+    compile 'com.alibaba:fastjson:1.2.24'
+}

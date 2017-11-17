@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/titail"
+        android:layout_height="48dp">
+
+    <TextView
+        android:padding="11dp"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="返回"
+        android:textColor="@color/white"
+        android:id="@+id/back"
+        android:textSize="18sp"
+        android:layout_gravity="center_vertical"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/titail"
+            android:gravity="center"
+            android:text="标题"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            />
+
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:id="@+id/titail_right"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/saoyisao"
+                />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="扫一扫"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:id="@+id/righ"
+            android:textSize="12sp"
+            android:layout_gravity="center_vertical"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cdhd">
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+
+    <application
+        android:allowBackup="true"
+        android:name=".App"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.ScanActivity"></activity>
+        <activity android:name=".activity.MySelfActivity"></activity>
+        <activity android:name=".activity.BaseInfoActivity"></activity>
+        <activity android:name=".activity.ConpanyInfoActivity"></activity>
+        <activity android:name=".activity.LogisticalInfoActivity"></activity>
+        <activity android:name=".activity.PlaceInfoActivity"></activity>
+        <activity android:name=".activity.ProduceInfoActivity"></activity>
+        <activity android:name=".activity.TestInfoActivity"></activity>
+        <activity android:name=".activity.ProduceEditerActivity"></activity>
+        <activity android:name=".activity.PreviewActivity"></activity>
+
+        <activity
+            android:name="com.yanzhenjie.album.AlbumActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="图库"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden|stateHidden" />
+    </application>
+
+</manifest>

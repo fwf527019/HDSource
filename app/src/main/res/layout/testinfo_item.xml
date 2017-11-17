@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:padding="12dp"
+            android:text="检测信息"
+            android:textColor="@color/black" />
+
+        <View
+            android:id="@+id/test_info_name"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_height="0.5dp"
+            android:background="@color/whites"></View>
+
+        <TextView
+            android:text="null"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/test_info_brand"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:text="null"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/test_info_grade"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:text="null"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/test_info_enterprise"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+        <TextView
+            android:text="null"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:id="@+id/test_infon_sourcenum"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+        
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:id="@+id/test_info_img_ll"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/whites"
+        android:layout_marginLeft="12dp"
+        ></View>
+    <TextView
+        android:text="null"
+        android:background="@color/white"
+        android:gravity="center_vertical|end"
+        android:id="@+id/test_info_manager"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        />
+
+</LinearLayout>
