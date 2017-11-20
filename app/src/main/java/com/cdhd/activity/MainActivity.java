@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,17 +43,12 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
 
     private static final int PAGE_SIZE = 10;
     @BindView(R.id.back)
-    TextView back;
+    ImageView back;
     @BindView(R.id.titail)
     TextView titail;
-    @BindView(R.id.righ)
-    TextView righ;
     @BindView(R.id.titail_right)
     LinearLayout titailRight;
-    @BindView(R.id.sherchpage_edt)
-    EditText sherchpageEdt;
-    @BindView(R.id.go_exit_btn)
-    TextView goExitBtn;
+
     @BindView(R.id.main_recyclerview)
     RecyclerView mainRecyclerview;
     @BindView(R.id.activity_main)
@@ -62,7 +58,7 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
     SmartRefreshLayout refreshLayout;
     private GetMianPageData getMianPageData;
     private int pageIndex = 1;
-    private String keyWord="";
+    private String keyWord = "";
 
     @Override
     protected int getContentViewResId() {
@@ -87,7 +83,9 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
         titail.setText("首页");
-        back.setText("我的");
+
+       // back.setText("我的");
+        back.setBackgroundResource(R.mipmap.header_ico);
         titailRight.setVisibility(View.VISIBLE);
 
         //刷新
@@ -109,7 +107,7 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
 
     }
 
-    @OnClick({R.id.back, R.id.titail_right, R.id.go_exit_btn})
+    @OnClick({R.id.back, R.id.titail_right, R.id.titail})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -146,8 +144,8 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
                         .start();
                 break;
             //关键词收索
-            case R.id.go_exit_btn:
-                keyWord = sherchpageEdt.getText().toString();
+            case R.id.titail:
+             //   keyWord = sherchpageEdt.getText().toString();
                 getMianPageData.getMainList(keyWord, 1, PAGE_SIZE);
                 startActivity(new Intent(this, ProduceEditerActivity.class));
                 break;

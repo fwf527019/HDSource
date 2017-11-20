@@ -4,6 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/f4"
     android:orientation="vertical"
     tools:context="com.cdhd.activity.MainActivity">
 
@@ -20,55 +21,33 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:text="输入产品名称，溯源码，批次号"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="@color/white"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/activity_my_project_menu_bg">
 
-
-                <LinearLayout
-                    android:layout_width="260dp"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/sherch_kuang"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/ic_search_grey" />
-
-                    <EditText
-                        android:id="@+id/sherchpage_edt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@null"
-                        android:hint="输入产品名称，溯源码，批次号"
-                        android:imeOptions="actionSearch"
-                        android:singleLine="true"
-                        android:textColorHint="@color/greys"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/go_exit_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="搜索"
-                    android:textColor="@color/black" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@null" />
             </LinearLayout>
 
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/main_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp">
 
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>

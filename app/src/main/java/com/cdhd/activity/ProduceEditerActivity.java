@@ -3,6 +3,7 @@ package com.cdhd.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ import butterknife.OnClick;
 
 public class ProduceEditerActivity extends ActivityBase {
     @BindView(R.id.back)
-    TextView back;
+    ImageView back;
     @BindView(R.id.titail)
     TextView titail;
     @BindView(R.id.righ)

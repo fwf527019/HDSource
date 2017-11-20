@@ -24,14 +24,13 @@ import butterknife.ButterKnife;
  */
 public class BaseInfoActivity extends ActivityBase {
     @BindView(R.id.back)
-    TextView back;
+    ImageView back;
     @BindView(R.id.titail)
     TextView titail;
 
     @BindView(R.id.logn_bt)
     Button lognBt;
-    @BindView(R.id.righ)
-    TextView righ;
+
     @BindView(R.id.titail_right)
     LinearLayout titailRight;
 

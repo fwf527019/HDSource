@@ -11,4 +11,13 @@
     <color name="greys">#999999</color>
     <color name="f6">#f6f6f6</color>
     <color name="whites">#c9c0be</color>
+    <color name="e6">#e6e6e6</color>
+    <color name="f4">#f4f4f4</color>
+    <color name="main_green">#48be00</color>
+    <color name="words_color">#c9c0be</color>
+    <color name="words_gry_color">#666666</color>
+    <color name="kuang_d8">#d8d8d8</color>
+    <color name="blacks">#333333</color>
+
+
 </resources>

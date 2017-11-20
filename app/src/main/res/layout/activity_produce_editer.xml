@@ -8,17 +8,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/titail">
+        android:background="@color/main_green">
 
-        <TextView
+        <ImageView
             android:id="@+id/back"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:padding="11dp"
-            android:text="返回"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:background="@mipmap/back_ico" />
 
         <TextView
             android:id="@+id/titail"
@@ -60,9 +57,9 @@
             android:layout_height="match_parent" />
 
         <TextView
+            android:id="@+id/name_titail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:id="@+id/name_titail"
             android:layout_gravity="bottom"
             android:background="@color/grgray"
             android:gravity="center_vertical"
@@ -80,62 +77,64 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-            
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/base_info"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:background="@drawable/ic1_qiandao"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    />
+                    android:background="@mipmap/produce_edt1" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="基本信息"
-                    />
+                    android:text="基本信息" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/produce_info"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:background="@drawable/ic2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    />
+                    android:background="@mipmap/produce_edt2" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="生产信息"
-                    />
+                    android:text="生产信息" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/test_info"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:background="@drawable/ic3"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    />
+                    android:background="@mipmap/produce_edt3" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="检测信息"
-                    />
+                    android:text="检测信息" />
             </LinearLayout>
 
         </LinearLayout>
@@ -144,67 +143,68 @@
             android:id="@+id/logistical_info"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:background="@drawable/ic4"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    />
+                    android:background="@mipmap/produce_edt4" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="物流信息"
-                    />
+                    android:text="物流信息" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/place_infon"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:background="@drawable/ic5"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    />
+                    android:background="@mipmap/produce_edt5" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="生产基地信息"
-                    />
+                    android:text="生产基地信息" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/canpany_info"
                 android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="match_parent">
+                android:orientation="vertical">
+
                 <ImageView
-                    android:background="@drawable/ic6"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    />
+                    android:background="@mipmap/produce_edt6" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="生产企业信息"
-                    />
+                    android:text="生产企业信息" />
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 
 </LinearLayout>

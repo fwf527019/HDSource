@@ -14,6 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.cdhd.R;
+import com.cdhd.utils.StatusBarUtil;
+
 
 /**
  * Created by Administrator on 2017/2/20.
@@ -26,7 +29,7 @@ public abstract class ActivityBase extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
+       // setContentView(R.layout.activity_bace);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             //透明状态栏
          //   getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -36,8 +39,9 @@ public abstract class ActivityBase extends FragmentActivity {
         }
 
         setContentView(getContentViewResId());
+        StatusBarUtil.setColor(this,getResources().getColor(R.color.main_green));
         //状态栏高度
-        getRootView(this).setPadding(0,getStatusHeight(),0,0);
+     //   getRootView(this).setPadding(0,getStatusHeight(),0,0);
         initViews(); //初始化控件
         initDatas();//初始化数据
 

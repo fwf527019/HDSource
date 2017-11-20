@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 android {
     compileSdkVersion 25
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.cdhd"
         minSdkVersion 15
@@ -51,6 +51,6 @@ dependencies {
     compile 'com.facebook.fresco:fresco:1.2.0'
     //android相册
     compile 'com.yanzhenjie:album:1.0.0' //http://blog.csdn.net/yanzhenjie1003
-
     compile 'com.alibaba:fastjson:1.2.24'
+  // compile  'com.jaeger.statusbarutil:library:1.4.0'
 }

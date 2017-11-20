@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         fresco:roundAsCircle="true"
         android:layout_centerHorizontal="true"
-        fresco:placeholderImage="@drawable/header"
+        fresco:placeholderImage="@mipmap/header_have"
         android:layout_marginTop="60dp"/>
 
 

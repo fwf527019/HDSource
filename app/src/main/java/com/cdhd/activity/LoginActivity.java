@@ -24,11 +24,9 @@ import butterknife.OnClick;
 
 public class LoginActivity extends ActivityBase implements LoginInterface {
     @BindView(R.id.back)
-    TextView back;
+    ImageView back;
     @BindView(R.id.titail)
     TextView titail;
-    @BindView(R.id.img)
-    ImageView img;
     @BindView(R.id.username)
     EditText username;
     @BindView(R.id.password)

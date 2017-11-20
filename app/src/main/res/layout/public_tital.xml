@@ -5,17 +5,15 @@
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/titail"
+        android:background="@color/main_green"
         android:layout_height="48dp">
 
-    <TextView
+    <ImageView
         android:padding="11dp"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="返回"
-        android:textColor="@color/white"
         android:id="@+id/back"
-        android:textSize="18sp"
+        android:background="@mipmap/back_ico"
         android:layout_gravity="center_vertical"
         />
         <TextView
@@ -38,20 +36,10 @@
             android:id="@+id/titail_right"
             android:layout_height="match_parent">
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/saoyisao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/saoma"
                 />
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:text="扫一扫"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:id="@+id/righ"
-            android:textSize="12sp"
-            android:layout_gravity="center_vertical"
-            />
         </LinearLayout>
     </LinearLayout>
 
