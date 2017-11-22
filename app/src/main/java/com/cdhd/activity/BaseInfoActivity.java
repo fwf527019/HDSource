@@ -18,6 +18,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/11/8.
@@ -38,7 +39,8 @@ public class BaseInfoActivity extends ActivityBase {
     LinearLayout addimgLl;
     @BindView(R.id.addimg)
     ImageView addimg;
-    public static final int MAX_PHOTO_NUM=9;
+    public static final int MAX_PHOTO_NUM = 9;
+
     @Override
     protected int getContentViewResId() {
         return R.layout.activity_baseinfo;
@@ -83,5 +85,17 @@ public class BaseInfoActivity extends ActivityBase {
             }
         }
 
+    }
+
+    @OnClick({R.id.back, R.id.logn_bt})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
+            case R.id.logn_bt:
+
+                break;
+        }
     }
 }

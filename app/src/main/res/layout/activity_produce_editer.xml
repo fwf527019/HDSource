@@ -49,10 +49,10 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_height="290dp">
 
         <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/pic_edter"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -62,16 +62,17 @@
             android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:background="@color/grgray"
-            android:gravity="center_vertical"
-            android:text="        标题"
+            android:gravity="center"
+            android:text="标题"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </FrameLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <LinearLayout
@@ -89,13 +90,16 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:background="@mipmap/produce_edt1" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
                     android:text="基本信息" />
             </LinearLayout>
 
@@ -108,13 +112,16 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:background="@mipmap/produce_edt2" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
                     android:text="生产信息" />
             </LinearLayout>
 
@@ -127,13 +134,16 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:background="@mipmap/produce_edt3" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
                     android:text="检测信息" />
             </LinearLayout>
 
@@ -154,13 +164,16 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:background="@mipmap/produce_edt4" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
                     android:text="物流信息" />
             </LinearLayout>
 
@@ -173,13 +186,16 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:background="@mipmap/produce_edt5" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
                     android:text="生产基地信息" />
             </LinearLayout>
 
@@ -192,13 +208,16 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:background="@mipmap/produce_edt6" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
                     android:text="生产企业信息" />
             </LinearLayout>
 

@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,7 +18,6 @@ import android.widget.Toast;
 
 import com.cdhd.R;
 import com.cdhd.presenter.GetMianPageData;
-import com.cdhd.response.MainData;
 import com.cdhd.response.MainListData;
 import com.cdhd.view.MainPageInterface;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -40,7 +42,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends ActivityBase implements MainPageInterface {
 
-
     private static final int PAGE_SIZE = 10;
     @BindView(R.id.back)
     ImageView back;
@@ -56,6 +57,8 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
     static final int REQUEST_CODE = 5;
     @BindView(R.id.refresh_layout)
     SmartRefreshLayout refreshLayout;
+    @BindView(R.id.search_edt)
+    EditText searchEdt;
     private GetMianPageData getMianPageData;
     private int pageIndex = 1;
     private String keyWord = "";
@@ -84,7 +87,7 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
         ButterKnife.bind(this);
         titail.setText("首页");
 
-       // back.setText("我的");
+        // back.setText("我的");
         back.setBackgroundResource(R.mipmap.header_ico);
         titailRight.setVisibility(View.VISIBLE);
 
@@ -93,15 +96,35 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
                 pageIndex = 1;
-                getMianPageData.getMainList(keyWord, 1, PAGE_SIZE);
+                getMianPageData.getMainList(keyWord, pageIndex, PAGE_SIZE);
 
             }
         });
         //加载
+        refreshLayout.setEnableLoadmoreWhenContentNotFull(true);
         refreshLayout.setOnLoadmoreListener(new OnLoadmoreListener() {
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
-
+                getMianPageData.getMainList(keyWord, pageIndex, PAGE_SIZE);
+            }
+        });
+        searchEdt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Log.d("MainActivity", "v:" + v);
+                Log.d("MainActivity", "actionId:" + actionId);
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    if (searchEdt.getText().toString().trim().length() != 0) {
+                        keyWord = searchEdt.getText().toString().trim();
+                        pageIndex = 1;
+                        getMianPageData.getMainList(keyWord, pageIndex, PAGE_SIZE * 2);
+                    } else {
+                        Toast.makeText(MainActivity.this, "请输入搜索内容!", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(MainActivity.this, "aaaa!", Toast.LENGTH_SHORT).show();
+                }
+                return false;
             }
         });
 
@@ -143,10 +166,10 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
                         })
                         .start();
                 break;
-            //关键词收索
+
             case R.id.titail:
-             //   keyWord = sherchpageEdt.getText().toString();
-                getMianPageData.getMainList(keyWord, 1, PAGE_SIZE);
+                //   keyWord = sherchpageEdt.getText().toString();
+
                 startActivity(new Intent(this, ProduceEditerActivity.class));
                 break;
         }
@@ -184,25 +207,28 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
     /**
      * 列表展示
      */
-    private ItemBind<MainData> itemBind = new ItemBind<MainData>() {
+    private ItemBind<MainListData.DataBean> itemBind = new ItemBind<MainListData.DataBean>() {
         @Override
-        public void onBind(ItemView itemView, MainData o, int i) {
-
-            itemView.setText(R.id.item_titail, "hahha");
-            itemView.setText(R.id.item_sourcenum, "010021121");
-            itemView.setText(R.id.item_batchnum, "5222121212");
+        public void onBind(ItemView itemView, final MainListData.DataBean dataBean, int i) {
+            //绑定数据
+            itemView.setText(R.id.item_titail, dataBean.getProduct().getProductName());
+            itemView.setText(R.id.item_sourcenum, "溯源码:" + dataBean.getOriginCode());
+            itemView.setText(R.id.item_batchnum, "批次号:" + dataBean.getBatchCode());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(MainActivity.this, ProduceEditerActivity.class);
+                    intent.putExtra("id", String.valueOf(dataBean.getBatchId()));
+                    intent.putExtra("productId", String.valueOf(dataBean.getProductId()));
+                    startActivity(intent);
                 }
             });
         }
     };
 
-    List<MainData> list;
+    List<MainListData.DataBean> list;
 
-    private void initRecycler(List<MainData> list) {
+    private void initRecycler(List<MainListData.DataBean> list) {
         mainRecyclerview.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         adapter = SlideAdapter
                 .load(list)
@@ -215,7 +241,8 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
 
     @Override
     public void showData(MainListData data) {
-
+        list = new ArrayList<>();
+        list = data.getData();
 //        if (pager == 1) {
 //
 //            dataBeans.clear()
@@ -225,11 +252,13 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
 //        } else {
 //            adapter!!.loadMore(dataBean)
 //        }
+
         if (pageIndex == 1) {
-            list.clear();
-            initRecycler(list);
+//            list.clear();
+//            list=data.getData();
+            initRecycler(data.getData());
         } else {
-            //adapter.loadMore();
+            adapter.loadMore(data.getData());
         }
         pageIndex++;
         refreshLayout.finishRefresh();

@@ -53,7 +53,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
                 android:gravity="center_vertical"
-                android:text="标题"
+                android:text="生产信息"
                 android:textColor="@color/blacks"
                 android:textSize="14sp" />
 
@@ -83,7 +83,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
                 android:gravity="center_vertical"
-                android:text="标题"
+                android:text="检测信息"
                 android:textColor="@color/blacks"
                 android:textSize="14sp" />
 
@@ -113,7 +113,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
                 android:gravity="center_vertical"
-                android:text="标题"
+                android:text="生产基地信息"
                 android:textColor="@color/blacks"
                 android:textSize="14sp" />
 
@@ -133,7 +133,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="70dp">
-
                 </LinearLayout>
             </LinearLayout>
 
@@ -143,7 +142,7 @@
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
                 android:gravity="center_vertical"
-                android:text="标题"
+                android:text="生产企业信息"
                 android:textColor="@color/blacks"
                 android:textSize="14sp" />
 

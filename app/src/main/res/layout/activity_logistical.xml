@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/f4"
     android:orientation="vertical">
 
     <ScrollView
@@ -19,206 +20,118 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="14dp"
                     android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
+                    android:text="入库信息:"
+                    android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/kuang_r" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="14dp"
                     android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
+                    android:text="入库时间:"
+                    android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/kuang_r" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="14dp"
                     android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
+                    android:text="入库数量:"
+                    android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/kuang_r" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="14dp"
                     android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
+                    android:text="出库数量:"
+                    android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/kuang_r" />
 
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
+                    android:layout_marginLeft="14dp"
                     android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
+                    android:text="出库人员:"
+                    android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
-                    android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/kuang_r" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
-                    android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="12dp"
-                    android:gravity="center_vertical"
-                    android:text="产品名称:"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:background="@color/whites"></View>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/e6"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -227,7 +140,8 @@
                     android:layout_height="45dp"
                     android:gravity="center"
                     android:text="相关图片"
-                    android:textColor="@color/black"
+                    android:textColor="#333333"
+                    android:textSize="14sp"
 
                     />
 
@@ -237,25 +151,46 @@
                     android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:text="最多上传9张图片，建议尺寸400*400"
-                    android:textColor="@color/grgray"
+                    android:textColor="#666666"
 
                     />
 
             </LinearLayout>
 
-            <LinearLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="80dp"
+                android:layout_marginTop="15dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/e6"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/addimg_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:orientation="horizontal"></LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/addimg"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="12dp"
+                        android:background="@mipmap/up_pic" />
+                </LinearLayout>
+
+            </HorizontalScrollView>
 
             <Button
                 android:id="@+id/logn_bt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn_bgs1"
                 android:text="保    存"

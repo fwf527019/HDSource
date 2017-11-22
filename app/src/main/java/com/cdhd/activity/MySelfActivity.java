@@ -1,5 +1,8 @@
 package com.cdhd.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.cdhd.App;
 import com.cdhd.R;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -22,8 +26,7 @@ public class MySelfActivity extends ActivityBase {
     ImageView back;
     @BindView(R.id.titail)
     TextView titail;
-    @BindView(R.id.righ)
-    TextView righ;
+
     @BindView(R.id.titail_right)
     LinearLayout titailRight;
     @BindView(R.id.myself_photo_img)
@@ -34,8 +37,10 @@ public class MySelfActivity extends ActivityBase {
     TextView myselfWork;
     @BindView(R.id.logn_bt)
     Button lognBt;
+    private String name;
+    private String roleName;
+    private SharedPreferences sp;
 
-    @Override
     protected int getContentViewResId() {
         return R.layout.activity_myself;
     }
@@ -47,6 +52,9 @@ public class MySelfActivity extends ActivityBase {
 
     @Override
     protected void initDatas() {
+        sp = getSharedPreferences("user_data", Context.MODE_PRIVATE);
+        name = sp.getString("name", "");
+        roleName = sp.getString("RoleName", "");
 
     }
 
@@ -55,6 +63,9 @@ public class MySelfActivity extends ActivityBase {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+        titail.setText("个人中心");
+        myselfName.setText(name);
+        myselfWork.setText(roleName);
     }
 
     @OnClick({R.id.back, R.id.logn_bt})
@@ -63,8 +74,13 @@ public class MySelfActivity extends ActivityBase {
             case R.id.back:
                 finish();
                 break;
+            //退出登录
             case R.id.logn_bt:
-
+                SharedPreferences.Editor editor = sp.edit();
+                editor.clear();
+                editor.commit();
+                App.setOriginToken("");
+                startActivity(new Intent(MySelfActivity.this,LoginActivity.class));
                 break;
         }
     }

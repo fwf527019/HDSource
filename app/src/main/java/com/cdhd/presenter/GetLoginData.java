@@ -47,6 +47,7 @@ public class GetLoginData {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         loginInterface.error();
+                        Log.d("GetLoginData", "e:" + e);
                     }
 
                     @Override

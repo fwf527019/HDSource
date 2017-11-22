@@ -7,50 +7,65 @@
 
     <include layout="@layout/public_tital"></include>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/myself_photo_img"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        fresco:roundAsCircle="true"
-        android:layout_centerHorizontal="true"
-        fresco:placeholderImage="@mipmap/header_have"
-        android:layout_marginTop="60dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="148dp"
+            android:background="@color/main_green">
 
+        </LinearLayout>
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/myself_photo_img"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="78dp"
+            fresco:placeholderImage="@mipmap/header_have"
+            fresco:roundAsCircle="true" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/myself_name"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="48dp"
         android:text="姓名"
-        />
+        android:textColor="@color/main_green"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/myself_work"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/grgray"
-        android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:text="职务"
-        />
+        android:textColor="@color/main_green"
+        android:textSize="16sp" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </View>
 
     <Button
         android:id="@+id/logn_bt"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/btn_bgs1"
         android:text="退出登录"
         android:textColor="#ffffff"
         android:textSize="16sp" />
+
 </LinearLayout>

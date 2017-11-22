@@ -1,5 +1,7 @@
 package com.cdhd.presenter;
 
+import android.util.Log;
+
 import com.alibaba.fastjson.JSON;
 import com.cdhd.ApiUrl;
 import com.cdhd.response.MainListData;
@@ -39,6 +41,7 @@ public class GetMianPageData {
             }
             @Override
             public void onResponse(String response, int id) {
+                Log.d("GetMianPageData", response);
                 MainListData data=JSON.parseObject(response, MainListData.class);
                 mainPageInterface.showData(data);
             }

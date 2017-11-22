@@ -1,45 +1,44 @@
 package com.cdhd.response;
 
-import java.util.List;
-
 /**
- * Created by Administrator on 2017/11/17.
+ * Created by Administrator on 2017/11/21.
  */
 
-public class MainListData {
+public class BatchDetailData {
+
 
     /**
-     * Count : 1
-     * Data : [{"Guid":"b872b19e-3441-4978-a910-ea3cd6089a97","BatchId":2,"MerchantId":2,"ProductId":2,"OriginCode":"201711211118250000111","BatchCode":"201711211118250000111","CreateTime":"2017-11-21 11:19:13","ReviewStatus":0,"ReviewOpinion":null,"BatchStatus":1,"QrCodeUrl":"/Images/QrCode/201711/c8fb7ccdd0654177bf7a23e853fa4424.png","IsRecommendToHome":null,"IsDelete":0,"Product":{"Guid":"8f743cec-35ee-4592-8ec7-0ea7de15ef08","ProductId":2,"MerchantId":2,"ProductCode":"PRO20171121001","ProductName":"第一个产品","ProductDesc":"产品描述描述描述","ProductImage":"/Images/Upload/201711/56d46acdbb0441d3b4584331240eea99.jpeg","CreateTime":"2017-11-21 11:17:34","ProductionName":"第一个产品","ProductionBrandName":"优质品牌","ProdutionGrade":"优质等级","ProdutionEnterprise":"渣渣企业","ProductStatus":1,"IsDelete":0,"Merchant":null}}]
-     * Index : 1
+     * Data : {"Guid":"b872b19e-3441-4978-a910-ea3cd6089a97","BatchId":2,"MerchantId":2,"ProductId":2,"OriginCode":"201711211118250000111","BatchCode":"201711211118250000111","CreateTime":"2017-11-21 11:19:13","ReviewStatus":0,"ReviewOpinion":null,"BatchStatus":1,"QrCodeUrl":"/Images/QrCode/201711/c8fb7ccdd0654177bf7a23e853fa4424.png","IsRecommendToHome":null,"IsDelete":0,"Product":{"Guid":"8f743cec-35ee-4592-8ec7-0ea7de15ef08","ProductId":2,"MerchantId":2,"ProductCode":"PRO20171121001","ProductName":"第一个产品","ProductDesc":"产品描述描述描述","ProductImage":"/Images/Upload/201711/56d46acdbb0441d3b4584331240eea99.jpeg","CreateTime":"2017-11-21 11:17:34","ProductionName":"第一个产品","ProductionBrandName":"优质品牌","ProdutionGrade":"优质等级","ProdutionEnterprise":"渣渣企业","ProductStatus":1,"IsDelete":0,"Merchant":null}}
+     * Message :
+     * Success : true
      */
 
-    private int Count;
-    private int Index;
-    private List<DataBean> Data;
+    private DataBean Data;
+    private String Message;
+    private boolean Success;
 
-    public int getCount() {
-        return Count;
-    }
-
-    public void setCount(int Count) {
-        this.Count = Count;
-    }
-
-    public int getIndex() {
-        return Index;
-    }
-
-    public void setIndex(int Index) {
-        this.Index = Index;
-    }
-
-    public List<DataBean> getData() {
+    public DataBean getData() {
         return Data;
     }
 
-    public void setData(List<DataBean> Data) {
+    public void setData(DataBean Data) {
         this.Data = Data;
+    }
+
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String Message) {
+        this.Message = Message;
+    }
+
+    public boolean isSuccess() {
+        return Success;
+    }
+
+    public void setSuccess(boolean Success) {
+        this.Success = Success;
     }
 
     public static class DataBean {

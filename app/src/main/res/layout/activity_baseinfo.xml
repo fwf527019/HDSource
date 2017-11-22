@@ -75,7 +75,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:background="@color/e6"
-
                 android:orientation="vertical">
 
                 <TextView
@@ -85,18 +84,18 @@
                     android:gravity="center_vertical"
                     android:text="相关图片"
                     android:textColor="@color/black" />
-
-
             </LinearLayout>
 
+
             <HorizontalScrollView
+                android:background="@color/f4"
                 android:layout_width="match_parent"
                 android:layout_height="80dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/e6"
+                    android:background="@color/f4"
                     android:orientation="horizontal">
 
                     <LinearLayout
