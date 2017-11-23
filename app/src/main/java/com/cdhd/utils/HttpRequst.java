@@ -47,7 +47,7 @@ public class HttpRequst {
      * @param st
      * @param callback
      */
-    public static void CreatPostRequstNoToken(String url, String st, MStringCallback callback) {
+    public static void CreatPostRequst(String url, String st, MStringCallback callback) {
         OkHttpUtils
                 .postString()
                 .addHeader("OriginToken", App.getOriginToken())

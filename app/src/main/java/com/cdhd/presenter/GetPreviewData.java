@@ -7,6 +7,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cdhd.ApiUrl;
 import com.cdhd.response.BatchAllData;
+import com.cdhd.response.BatchDetailData;
 import com.cdhd.utils.HttpRequst;
 import com.cdhd.utils.MStringCallback;
 import com.cdhd.view.PreviewInterface;
@@ -39,8 +40,13 @@ public class GetPreviewData {
 
             @Override
             public void onResponse(String response, int id) {
-//                BatchAllData data=JSON.parseObject();
-//                previewInterface.showBaseInfo();
+                BatchAllData data=JSON.parseObject(response, BatchAllData.class);
+                previewInterface.showBaseInfo(data.getData().getEssential());
+                previewInterface.showProduceInfo(data.getData().getProdution());
+                previewInterface.showPlaceInfo(data.getData().getBase());
+                previewInterface.showEnterpriseInfo(data.getData().getEnterprise());
+                previewInterface.showTestInfo(data.getData().getQuality());
+
             }
         });
     }

@@ -33,12 +33,15 @@
                     android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="产品名称:"
-                    android:textColor="@color/black"
+                    android:textColor="#333333"
                     android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/produce_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textSize="15sp"
+                    android:textColor="#333333"
                     android:layout_marginLeft="20dp"
                     android:background="@null" />
 
@@ -55,16 +58,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="38dp"
+                    android:textColor="#333333"
                     android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
-                    android:text="产品描述:"
-                    android:textColor="@color/black" />
+                    android:text="产品描述:" />
 
                 <EditText
                     style="@style/text_66_12"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="80dp"
                     android:layout_marginLeft="20dp"
+                    android:textColor="#333333"
+                    android:gravity="left"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    android:id="@+id/produce_content"
+                    android:layout_marginBottom="10dp"
+                    android:lineSpacingMultiplier="1.5"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/kuang_r" />
 
@@ -82,8 +92,9 @@
                     android:layout_height="38dp"
                     android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
+                    android:textColor="#333333"
                     android:text="相关图片"
-                    android:textColor="@color/black" />
+                    />
             </LinearLayout>
 
 

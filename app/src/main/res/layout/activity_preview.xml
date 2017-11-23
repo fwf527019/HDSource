@@ -19,6 +19,8 @@
             android:orientation="vertical">
 
             <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/product_pic"
+                android:scaleType="centerInside"
                 android:layout_width="match_parent"
                 android:layout_height="360dp" />
 
@@ -27,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <com.cdhd.utils.MyTextView
+                    android:id="@+id/produce_name"
                     android:layout_width="match_parent"
                     android:layout_height="41dp"
                     android:layout_marginLeft="28dp"
@@ -36,19 +39,25 @@
                     android:textColor="@color/blacks"
                     android:textSize="14sp" />
 
-                <TextView
-                    style="@style/text_66_12"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/kuang_r"
-                    android:text="内容"
-                    android:textColor="@color/grgray"
-                    android:textSize="14sp" />
+                    android:background="@drawable/kuang_r">
+
+                    <com.cdhd.utils.MyTextView
+                        android:id="@+id/eseential_content"
+                        style="@style/text_66_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:lineSpacingMultiplier="1.5"
+                        android:textColor="@color/grgray" />
+                </LinearLayout>
             </LinearLayout>
 
-            <TextView
+            <com.cdhd.utils.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
@@ -61,24 +70,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+
                 android:layout_marginRight="15dp"
                 android:background="@drawable/kuang_r"
                 android:orientation="vertical">
 
-                <TextView
+                <com.cdhd.utils.MyTextView
+                    android:id="@+id/produce_content"
+                    style="@style/text_66_12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:lineSpacingMultiplier="1.5"
                     android:text="内容" />
 
-                <LinearLayout
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/pic_produce_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone"></LinearLayout>
+                </HorizontalScrollView>
+
             </LinearLayout>
 
 
-            <TextView
+            <com.cdhd.utils.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
@@ -93,22 +116,35 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/kuang_r"
+
                 android:orientation="vertical">
 
-                <TextView
+                <com.cdhd.utils.MyTextView
+                    android:id="@+id/test_content"
+                    style="@style/text_66_12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:lineSpacingMultiplier="1.5"
                     android:text="内容" />
 
-                <LinearLayout
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/pic_test_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone"></LinearLayout>
+                </HorizontalScrollView>
             </LinearLayout>
 
 
-            <TextView
+            <com.cdhd.utils.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
@@ -125,19 +161,34 @@
                 android:background="@drawable/kuang_r"
                 android:orientation="vertical">
 
-                <TextView
+                <com.cdhd.utils.MyTextView
+                    android:id="@+id/place_content"
+                    style="@style/text_66_12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:lineSpacingMultiplier="1.5"
                     android:text="内容" />
 
-                <LinearLayout
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/pic_place_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
             </LinearLayout>
 
 
-            <TextView
+            <com.cdhd.utils.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
                 android:layout_marginLeft="28dp"
@@ -149,21 +200,36 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/kuang_r"
                 android:orientation="vertical">
 
-                <TextView
+                <com.cdhd.utils.MyTextView
+                    android:id="@+id/enterprise_content"
+                    style="@style/text_66_12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:lineSpacingMultiplier="1.5"
                     android:text="内容" />
 
-                <LinearLayout
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/pic_enterprise_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                    </LinearLayout>
+                </HorizontalScrollView>
             </LinearLayout>
 
         </LinearLayout>

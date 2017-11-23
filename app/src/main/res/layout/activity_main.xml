@@ -62,6 +62,7 @@
                 android:background="@color/f4">
 
             </android.support.v7.widget.RecyclerView>
+
         </LinearLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>
