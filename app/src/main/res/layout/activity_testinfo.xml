@@ -25,7 +25,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="检测时间:"
                     android:textColor="#333333" />
@@ -33,8 +33,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    style="@style/text_33_12"
+                    android:paddingLeft="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/edt_1"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -47,7 +50,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="检测机构:"
                     android:textColor="#333333" />
@@ -55,8 +58,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:id="@+id/edt_2"
+                    android:paddingLeft="5dp"
+                    style="@style/text_33_12"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -69,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="检测人员:"
                     android:textColor="#333333" />
@@ -77,8 +83,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:id="@+id/edt_3"
+                    android:layout_marginLeft="15dp"
+                    style="@style/text_33_12"
+                    android:paddingLeft="5dp"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -91,16 +100,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="结构判断标准:"
                     android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/edt_4"
+                    android:paddingLeft="5dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="15dp"
+                    style="@style/text_33_12"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -170,6 +182,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/btn_bgs1"
                 android:text="保    存"
                 android:textColor="#ffffff"

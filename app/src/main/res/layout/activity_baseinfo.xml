@@ -38,10 +38,9 @@
 
                 <EditText
                     android:id="@+id/produce_name"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15sp"
-                    android:textColor="#333333"
                     android:layout_marginLeft="20dp"
                     android:background="@null" />
 
@@ -58,25 +57,26 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="38dp"
-                    android:textColor="#333333"
                     android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
-                    android:text="产品描述:" />
+                    android:text="产品描述:"
+                    android:textSize="15sp"
+                    android:textColor="#333333" />
 
                 <EditText
-                    style="@style/text_66_12"
+                    android:id="@+id/produce_content"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="#333333"
-                    android:gravity="left"
-                    android:padding="5dp"
-                    android:textSize="15sp"
-                    android:id="@+id/produce_content"
+
                     android:layout_marginBottom="10dp"
-                    android:lineSpacingMultiplier="1.5"
+                    android:layout_marginLeft="20dp"
+
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
+                    android:background="@drawable/kuang_r"
+                    android:gravity="left"
+                    android:lineSpacingMultiplier="1.5"
+                    android:padding="5dp" />
 
             </LinearLayout>
 
@@ -92,16 +92,16 @@
                     android:layout_height="38dp"
                     android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
-                    android:textColor="#333333"
                     android:text="相关图片"
-                    />
+                    android:textSize="15sp"
+                    android:textColor="#333333" />
             </LinearLayout>
 
 
             <HorizontalScrollView
-                android:background="@color/f4"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="80dp"
+                android:background="@color/f4">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -129,6 +129,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
+                android:layout_marginBottom="20dp"
                 android:background="@color/white"
                 android:gravity="center">
 

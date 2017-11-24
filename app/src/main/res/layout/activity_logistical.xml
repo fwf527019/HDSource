@@ -27,34 +27,15 @@
                     android:layout_height="40dp"
                     android:layout_marginLeft="14dp"
                     android:gravity="center_vertical"
-                    android:text="入库信息:"
-                    android:textColor="#333333" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
-                    android:gravity="center_vertical"
                     android:text="入库时间:"
                     android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:id="@+id/edt_1"
+                    android:paddingLeft="5dp"
+                    style="@style/text_33_12"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/kuang_r" />
@@ -78,7 +59,60 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:layout_marginRight="20dp"
+                    style="@style/text_33_12"
+                    android:id="@+id/edt_2"
+                    android:background="@drawable/kuang_r" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="14dp"
+                    android:gravity="center_vertical"
+                    android:text="入库人员:"
+                    android:textColor="#333333" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    style="@style/text_33_12"
+                    android:id="@+id/edt_3"
+                    android:layout_marginLeft="20dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/kuang_r" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="14dp"
+                    android:gravity="center_vertical"
+                    android:text="出库时间:"
+                    android:textColor="#333333" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/edt_4"
+                    android:layout_marginRight="20dp"
+                    android:paddingLeft="5dp"
+                    style="@style/text_33_12"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -99,11 +133,15 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    style="@style/text_33_12"
+                    android:id="@+id/edt_5"
                     android:layout_marginLeft="20dp"
+                    android:paddingLeft="5dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,12 +159,14 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:paddingLeft="5dp"
+                    style="@style/text_33_12"
+                    android:id="@+id/edt_6"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
@@ -191,6 +231,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn_bgs1"
                 android:text="保    存"

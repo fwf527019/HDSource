@@ -200,7 +200,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/kuang_r"
@@ -209,6 +209,7 @@
                 <com.cdhd.utils.MyTextView
                     android:id="@+id/enterprise_content"
                     style="@style/text_66_12"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"

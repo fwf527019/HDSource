@@ -25,16 +25,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="产品名称:"
                     android:textColor="#333333" />
 
                 <EditText
+                    android:id="@+id/edt_1"
                     android:layout_width="match_parent"
+                    android:paddingLeft="5dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="15dp"
+                    style="@style/text_33_12"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -47,16 +50,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="品牌:"
                     android:textColor="#333333" />
 
                 <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/edt_2"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginLeft="15dp"
+                    style="@style/text_33_12"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -69,7 +75,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="产品等级:"
                     android:textColor="#333333" />
@@ -77,8 +83,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/edt_3"
+                    android:layout_marginLeft="15dp"
+                    style="@style/text_33_12"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -91,7 +100,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="生产企业:"
                     android:textColor="#333333" />
@@ -99,8 +108,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:paddingLeft="5dp"
+                    style="@style/text_33_12"
+                    android:id="@+id/edt_4"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -113,7 +125,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="溯源码:"
                     android:textColor="#333333" />
@@ -121,8 +133,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:paddingLeft="5dp"
+                    style="@style/text_33_12"
+                    android:id="@+id/edt_5"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -135,7 +150,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="批次号:"
                     android:textColor="#333333" />
@@ -143,8 +158,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    style="@style/text_33_12"
+                    android:paddingLeft="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/edt_6"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -157,7 +175,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="生产日期:"
                     android:textColor="#333333" />
@@ -165,8 +183,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    style="@style/text_33_12"
+                    android:paddingLeft="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/edt_7"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -179,7 +200,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="保质期:"
                     android:textColor="#333333" />
@@ -187,8 +208,11 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
+                    android:id="@+id/edt_8"
+                    style="@style/text_33_12"
+                    android:layout_marginLeft="15dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginRight="15dp"
                     android:background="@drawable/kuang_r" />
 
             </LinearLayout>
@@ -255,6 +279,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn_bgs1"

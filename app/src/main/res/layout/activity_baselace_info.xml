@@ -25,17 +25,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="基地名称:"
                     android:textColor="#333333" />
 
                 <EditText
+
+                    android:id="@+id/edt_1"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
+                    android:layout_marginLeft="15dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/kuang_r"
+                    android:focusable="false" />
 
             </LinearLayout>
 
@@ -47,17 +52,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="基地地址:"
                     android:textColor="#333333" />
 
                 <EditText
+                    android:id="@+id/edt_2"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
+                    android:paddingLeft="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/kuang_r"
+                    android:focusable="false" />
 
             </LinearLayout>
 
@@ -69,17 +78,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="基地类型:"
                     android:textColor="#333333" />
 
                 <EditText
+                    android:id="@+id/edt_3"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/kuang_r"
+                    android:focusable="false" />
 
             </LinearLayout>
 
@@ -91,17 +104,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="基地面积:"
                     android:textColor="#333333" />
 
                 <EditText
+                    android:id="@+id/edt_4"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
+                    android:layout_marginLeft="15dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/kuang_r"
+                    android:focusable="false" />
 
             </LinearLayout>
 
@@ -113,17 +130,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="建成时间:"
                     android:textColor="#333333" />
 
                 <EditText
+                    android:id="@+id/edt_5"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
+                    android:layout_marginLeft="15dp"
+                    android:paddingLeft="5dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/kuang_r"
+                    android:focusable="false" />
 
             </LinearLayout>
 
@@ -135,28 +157,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center_vertical"
                     android:text="基地情况:"
                     android:textColor="#333333" />
 
                 <EditText
+                    android:id="@+id/edt_6"
+                    style="@style/text_33_12"
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/kuang_r" />
+                    android:layout_marginLeft="15dp"
+                    android:padding="5dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/kuang_r"
+                    android:focusable="false"
+                    android:gravity="left" />
 
             </LinearLayout>
 
 
-
-
             <LinearLayout
-                android:layout_marginTop="20dp"
-                android:background="@color/e6"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/e6"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -181,10 +206,11 @@
                     />
 
             </LinearLayout>
+
             <HorizontalScrollView
-                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
+                android:layout_height="80dp"
+                android:layout_marginTop="15dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
