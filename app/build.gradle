@@ -52,5 +52,7 @@ dependencies {
     //android相册
     compile 'com.yanzhenjie:album:1.0.0' //http://blog.csdn.net/yanzhenjie1003
     compile 'com.alibaba:fastjson:1.2.24'
-  // compile  'com.jaeger.statusbarutil:library:1.4.0'
+    // compile  'com.jaeger.statusbarutil:library:1.4.0'
+    //选择器
+    //compile 'com.github.addappcn:android-pickers:1.0.1'
 }

@@ -256,6 +256,13 @@ public class BaseInfoActivity extends ActivityBase implements EssentialInfoInter
             }
 
 
+        }else {
+            if(data.getMessage().contains("缺少验证口令")||data.getMessage().contains("无效的口令")){
+                Toast.makeText(this, "登录信息失效，请重新登录", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this,data.getMessage() , Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
@@ -263,6 +270,7 @@ public class BaseInfoActivity extends ActivityBase implements EssentialInfoInter
      * 提交数据
      */
     private void pushData() {
+        startProgressDialog("信息提交中...");
         essentialdata.getData().setProductName(produceName.getText().toString());
         essentialdata.getData().setProductDesc(produceContent.getText().toString());
         if (picSt != null) {
@@ -275,17 +283,18 @@ public class BaseInfoActivity extends ActivityBase implements EssentialInfoInter
         HttpRequst.CreatPostRequst(ApiUrl.SAVEESSENTIALDATA, jsonString, new MStringCallback() {
             @Override
             public void onError(Call call, Exception e, int id) {
+                stopProgressDialog();
                 ToastExUtils.showError(BaseInfoActivity.this, e.toString());
             }
 
             @Override
             public void onResponse(String response, int id) {
-                Log.d("BaseInfoActivity", response);
+                stopProgressDialog();
                 if (JSONObject.parseObject(response).get("Success").toString().equals("true")) {
                     Toast.makeText(BaseInfoActivity.this, "信息保存成功", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(BaseInfoActivity.this, "信息保存失败,请重试！", Toast.LENGTH_SHORT).show();
+                   ToastExUtils.showMassegeInfo(BaseInfoActivity.this,JSONObject.parseObject(response).get("Message").toString());
                 }
             }
         });

@@ -52,7 +52,7 @@ public class GetLoginData {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        LogUtils.d("GetLoginData", response);
+                        Log.d("GetLoginData", response);
                         LoginData data = JSON.parseObject(response, LoginData.class);
                         loginInterface.showLoginResult(data);
                     }

@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import com.cdhd.ApiUrl;
 import com.cdhd.R;
+import com.cdhd.common.ZoomableActivity;
 import com.cdhd.presenter.GetPreviewData;
 import com.cdhd.response.BatchAllData;
 import com.cdhd.utils.MyTextView;
 import com.cdhd.utils.ToastExUtils;
 import com.cdhd.view.PreviewInterface;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -98,8 +101,10 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
         productPic.setImageURI(ApiUrl.SERVICE_URL + data.getProductImage());
     }
 
+    //生产信息
     @Override
     public void showProduceInfo(BatchAllData.DataBean.ProdutionBean data) {
+        final ArrayList<String> pr_picUrlList = new ArrayList<>();
         //内容设置
         produceContent.setText("产品名称: " + data.getProductName() + "\n" +
                 "品牌: " + data.getBrandName() + "\n" +
@@ -114,6 +119,7 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
         if (data.getImages() != null && data.getImages().size() != 0) {
             picProduceLl.setVisibility(View.VISIBLE);
             for (int i = 0; i < data.getImages().size(); i++) {
+                pr_picUrlList.add(ApiUrl.SERVICE_URL + data.getImages().get(i));
                 SimpleDraweeView imgview = new SimpleDraweeView(PreviewActivity.this);
 
                 LinearLayout ll = new LinearLayout(PreviewActivity.this);
@@ -132,11 +138,19 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
         } else {
             picProduceLl.setVisibility(View.GONE);
         }
+        picProduceLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ZoomableActivity.goToPage(PreviewActivity.this, pr_picUrlList, 0);
+            }
+        });
+
     }
 
-
+    //检测信息
     @Override
     public void showTestInfo(BatchAllData.DataBean.QualityBean data) {
+        final ArrayList<String> ts_picUrlList = new ArrayList<>();
         testContent.setText("质检时间: " + data.getQualityTime() + "\n" +
                 "质检机构: " + data.getQualityOrganization() + "\n" +
                 "质检人: " + data.getQualityMan() + "\n" +
@@ -145,8 +159,10 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
 
         //图片设置
         if (data.getImages() != null && data.getImages().size() != 0) {
-            picProduceLl.setVisibility(View.VISIBLE);
+
+            picTestLl.setVisibility(View.VISIBLE);
             for (int i = 0; i < data.getImages().size(); i++) {
+                ts_picUrlList.add(ApiUrl.SERVICE_URL + data.getImages().get(i));
                 SimpleDraweeView imgview = new SimpleDraweeView(PreviewActivity.this);
                 LinearLayout ll = new LinearLayout(PreviewActivity.this);
                 ll.setBackgroundColor(getResources().getColor(R.color.e6));
@@ -164,11 +180,18 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
             picTestLl.setVisibility(View.GONE);
         }
 
-
+        picTestLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ZoomableActivity.goToPage(PreviewActivity.this, ts_picUrlList, 0);
+            }
+        });
     }
 
+    //基地信息
     @Override
     public void showPlaceInfo(BatchAllData.DataBean.BaseBean data) {
+        final ArrayList<String> bs_picUrlList = new ArrayList<>();
         placeContent.setText(
                 "基地名称: " + data.getBaseName() + "\n" +
                         "基地地址: " + data.getBaseAddress() + "\n" +
@@ -180,8 +203,9 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
 
         //图片设置
         if (data.getImages() != null && data.getImages().size() != 0) {
-            picProduceLl.setVisibility(View.VISIBLE);
+            picPlaceLl.setVisibility(View.VISIBLE);
             for (int i = 0; i < data.getImages().size(); i++) {
+                bs_picUrlList.add(ApiUrl.SERVICE_URL + data.getImages().get(i));
                 SimpleDraweeView imgview = new SimpleDraweeView(PreviewActivity.this);
                 LinearLayout ll = new LinearLayout(PreviewActivity.this);
                 ll.setBackgroundColor(getResources().getColor(R.color.e6));
@@ -198,25 +222,33 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
         } else {
             picPlaceLl.setVisibility(View.GONE);
         }
-
+        picPlaceLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ZoomableActivity.goToPage(PreviewActivity.this, bs_picUrlList, 0);
+            }
+        });
     }
 
+    //企业信息
     @Override
     public void showEnterpriseInfo(BatchAllData.DataBean.EnterpriseBean data) {
+        final ArrayList<String> en_picUrlList = new ArrayList<>();
         enterpriseContent.setText(
-                "企业名称: "+data.getEnterpriseName()+"\n"+
-                "主营产品: "+data.getMainProduct()+"\n"+
-                "营业执照号码: "+data.getLicenseCode()+"\n"+
-                "联系电话: "+data.getLinkPhone()+"\n"+
-                "传真号码: "+data.getFaxNumber()+"\n"+
-                "联系地址: "+data.getLinkAddress()+"\n"+
-                "网址: "+data.getWebsite()+"\n"+
-                "企业概况: "+data.getEnterpriseAbstract()
+                "企业名称: " + data.getEnterpriseName() + "\n" +
+                        "主营产品: " + data.getMainProduct() + "\n" +
+                        "营业执照号码: " + data.getLicenseCode() + "\n" +
+                        "联系电话: " + data.getLinkPhone() + "\n" +
+                        "传真号码: " + data.getFaxNumber() + "\n" +
+                        "联系地址: " + data.getLinkAddress() + "\n" +
+                        "网址: " + data.getWebsite() + "\n" +
+                        "企业概况: " + data.getEnterpriseAbstract()
         );
         //图片设置
         if (data.getImages() != null && data.getImages().size() != 0) {
-            picProduceLl.setVisibility(View.VISIBLE);
+            picEnterpriseLl.setVisibility(View.VISIBLE);
             for (int i = 0; i < data.getImages().size(); i++) {
+                en_picUrlList.add(ApiUrl.SERVICE_URL + data.getImages().get(i));
                 SimpleDraweeView imgview = new SimpleDraweeView(PreviewActivity.this);
                 LinearLayout ll = new LinearLayout(PreviewActivity.this);
                 ll.setBackgroundColor(getResources().getColor(R.color.e6));
@@ -233,7 +265,12 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
         } else {
             picEnterpriseLl.setVisibility(View.GONE);
         }
-
+        picEnterpriseLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ZoomableActivity.goToPage(PreviewActivity.this, en_picUrlList, 0);
+            }
+        });
 
     }
 

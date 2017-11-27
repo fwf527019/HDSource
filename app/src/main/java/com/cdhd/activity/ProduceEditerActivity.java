@@ -133,7 +133,7 @@ public class ProduceEditerActivity extends ActivityBase implements BatchDetailIn
                 picEdter.setImageURI(ApiUrl.SERVICE_URL + data.getData().getProduct().getProductImage());
             }
         } else {
-            Toast.makeText(this, data.getMessage(), Toast.LENGTH_SHORT).show();
+           ToastExUtils.showMassegeInfo(this,data.getMessage());
         }
     }
 

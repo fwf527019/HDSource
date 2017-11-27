@@ -35,6 +35,8 @@ import com.yanzhenjie.permission.RationaleListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -194,7 +196,19 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
                 }
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
-                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+                    Log.d("MainActivity", result);
+                    // http://192.168.1.14:803/Origin/Batch?batchId=2
+                    if (result.contains("Origin/Batch?batchId")) {
+                        String regEx=".+batchId=(.+)$";
+                        Pattern pattern=Pattern.compile(regEx);
+                        Matcher matcher=pattern.matcher(result);
+                        boolean rs = matcher.find();
+                        String batchId =  matcher.group(1);
+
+                        startActivity(new Intent(MainActivity.this, ProduceEditerActivity.class).putExtra("id", batchId));
+                    }else {
+                        Toast.makeText(this, "请扫描汇东产品", Toast.LENGTH_SHORT).show();
+                    }
                 }
             } else {
                 Toast.makeText(this, "No Result!", Toast.LENGTH_SHORT).show();
@@ -241,21 +255,10 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
 
     @Override
     public void showData(MainListData data) {
+
         list = new ArrayList<>();
         list = data.getData();
-//        if (pager == 1) {
-//
-//            dataBeans.clear()
-//
-//            dataBeans = dataBean as MutableList<SkillData.DataBean>
-//                    initRecyclerview(dataBeans)
-//        } else {
-//            adapter!!.loadMore(dataBean)
-//        }
-
         if (pageIndex == 1) {
-//            list.clear();
-//            list=data.getData();
             initRecycler(data.getData());
         } else {
             adapter.loadMore(data.getData());
@@ -263,6 +266,7 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
         pageIndex++;
         refreshLayout.finishRefresh();
         refreshLayout.finishLoadmore();
+
 
     }
 

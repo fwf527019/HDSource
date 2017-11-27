@@ -103,7 +103,7 @@ public class PlaceInfoActivity extends ActivityBase implements PlaceInterface {
                 finish();
                 break;
             case R.id.logn_bt:
-                Toast.makeText(this, "基地信息不能更改", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "基地信息不能编辑", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -117,48 +117,51 @@ public class PlaceInfoActivity extends ActivityBase implements PlaceInterface {
     @Override
     public void showPlaceInfo(PlaceData data) {
 
-        edt1.setText(data.getData().getBaseName());
-        edt2.setText(data.getData().getBaseAddress());
-        edt3.setText(data.getData().getBaseType());
-        edt4.setText(data.getData().getBaseArea());
-        edt5.setText(data.getData().getCreateTime());
-        edt6.setText(data.getData().getSourceInfo());
+        if (data.isSuccess()) {
+            edt1.setText(data.getData().getBaseName());
+            edt2.setText(data.getData().getBaseAddress());
+            edt3.setText(data.getData().getBaseType());
+            edt4.setText(data.getData().getBaseArea());
+            edt5.setText(data.getData().getCreateTime());
+            edt6.setText(data.getData().getSourceInfo());
 
 
-        //初始化
-        pics = new ArrayList<>();
+            //初始化
+            pics = new ArrayList<>();
 
-        for (int i = 0; i < data.getData().getImages().size(); i++) {
-            //加入List
-            pics.add(data.getData().getImages().get(i));
-            picNum = 1;
-            SimpleDraweeView simpview = new SimpleDraweeView(PlaceInfoActivity.this);
-            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
-            simpview.setLayoutParams(parms);
-            simpview.setImageURI(ApiUrl.SERVICE_URL + data.getData().getImages().get(i));
+            for (int i = 0; i < data.getData().getImages().size(); i++) {
+                //加入List
+                pics.add(data.getData().getImages().get(i));
+                picNum = 1;
+                SimpleDraweeView simpview = new SimpleDraweeView(PlaceInfoActivity.this);
+                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+                simpview.setLayoutParams(parms);
+                simpview.setImageURI(ApiUrl.SERVICE_URL + data.getData().getImages().get(i));
 
-            TextView textView = new TextView(this);
-            textView.setText("删 除");
-            textView.setBackgroundColor(getResources().getColor(R.color.black));
-            FrameLayout.LayoutParams parms1 = new FrameLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 20));
-            parms1.gravity = Gravity.BOTTOM;
-            textView.setLayoutParams(parms1);
-            textView.setAlpha((float) 0.7);
-            textView.setTextColor(getResources().getColor(R.color.white));
-            textView.setTextSize(8);
-            textView.setGravity(Gravity.CENTER);
-            final FrameLayout frameLayout = new FrameLayout(this);
+                TextView textView = new TextView(this);
+                textView.setText("删 除");
+                textView.setBackgroundColor(getResources().getColor(R.color.black));
+                FrameLayout.LayoutParams parms1 = new FrameLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 20));
+                parms1.gravity = Gravity.BOTTOM;
+                textView.setLayoutParams(parms1);
+                textView.setAlpha((float) 0.7);
+                textView.setTextColor(getResources().getColor(R.color.white));
+                textView.setTextSize(8);
+                textView.setGravity(Gravity.CENTER);
+                final FrameLayout frameLayout = new FrameLayout(this);
 
-            LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
-            params2.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
-            params2.gravity = Gravity.CENTER_VERTICAL;
-            frameLayout.setLayoutParams(params2);
-            frameLayout.addView(simpview);
-            frameLayout.addView(textView);
-            addimgLl.addView(frameLayout);
+                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+                params2.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
+                params2.gravity = Gravity.CENTER_VERTICAL;
+                frameLayout.setLayoutParams(params2);
+                frameLayout.addView(simpview);
+                frameLayout.addView(textView);
+                addimgLl.addView(frameLayout);
 
+            }
+        }else {
+            ToastExUtils.showMassegeInfo(this,data.getMessage());
         }
-
     }
 
 

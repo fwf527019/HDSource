@@ -1,257 +1,323 @@
 package com.cdhd.utils;
 
-import android.text.TextUtils;
-import android.text.format.DateFormat;
+import android.os.Debug;
+import android.os.Environment;
 import android.util.Log;
 
+import com.cdhd.picker.AppConfig;
+
+import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.io.Writer;
+
+
 
 /**
- * Title: LogUtils.java Description: 日志工具类：开发过程中，日志输出
- *
- * @author fwf
- * @date 2016-9-9 下午1:22:55
- * @version V1.0
+ * 将信息记录到控制台的LogCat，显示调用方法及所在的文件、行号，方便开发时调试查错。
+ * 注意：在Debug状态下开启，在Release状态下关闭，敏感信息不宜打印，否则被非法之徒抓取贻害无穷。
+ * @author matt
+ * blog: addapp.cn
  */
-public class LogUtils {
-    /**
-     * isWrite:用于开关是否吧日志写入txt文件中</p>
-     */
-    private static final boolean isWrite = false;
-    /**
-     * isDebug :是用来控制，是否打印日志
-     */
-    private static final boolean isDeBug = true;
-    /**
-     * 存放日志文件的所在路径
-     */
-    private static final String DIRPATH = "data/local/tmp/*";
-    // private static final String DIRPATH = "/log";
-    /**
-     * 存放日志的文本名
-     */
-    private static final String LOGNAME = "日志";
-    // private static final String LOGNAME = "log.txt";
-    /**
-     * 设置时间的格式
-     */
-    private static final String INFORMAT = "yyyy-MM-dd HH:mm:ss";
-    /**
-     * VERBOSE日志形式的标识符
-     */
-    public static final int VERBOSE = 5;
-    /**
-     * DEBUG日志形式的标识符
-     */
-    public static final int DEBUG = 4;
-    /**
-     * INFO日志形式的标识符
-     */
-    public static final int INFO = 3;
-    /**
-     * WARN日志形式的标识符
-     */
-    public static final int WARN = 2;
-    /**
-     * ERROR日志形式的标识符
-     */
-    public static final int ERROR = 1;
+public final class LogUtils {
+    private static final int MIN_STACK_OFFSET = 3;// starts at this class after two native calls
+    private static final int MAX_STACK_TRACE_SIZE = 131071; //128 KB - 1
+    private static final int METHOD_COUNT = 2; // show method count in trace
+    private static boolean isDebug = AppConfig.DEBUG_ENABLE;// 是否调试模式
+    private static String debugTag = AppConfig.DEBUG_TAG;// LogCat的标记
 
-    /**
-     * 把异常用来输出日志的综合方法
-     *
-     * @param @param tag 日志标识
-     * @param @param throwable 抛出的异常
-     * @param @param type 日志类型
-     * @return void 返回类型
-     * @throws
-     */
-    public static void log(String tag, Throwable throwable, int type) {
-        log(tag, exToString(throwable), type);
+    public static void setIsDebug(boolean isDebug) {
+        LogUtils.isDebug = isDebug;
+    }
+
+    public static boolean isDebug() {
+        return isDebug;
+    }
+
+    public static void setDebugTag(String debugTag) {
+        LogUtils.debugTag = debugTag;
+    }
+
+    public static String getDebugTag() {
+        return debugTag;
     }
 
     /**
-     * 用来输出日志的综合方法（文本内容）
+     * Verbose.
      *
-     * @param @param tag 日志标识
-     * @param @param msg 要输出的内容
-     * @param @param type 日志类型
-     * @return void 返回类型
-     * @throws
+     * @param message the message
      */
-    public static void log(String tag, String msg, int type) {
-        switch (type) {
-            case VERBOSE:
-                v(tag, msg);// verbose等级
-                break;
-            case DEBUG:
-                d(tag, msg);// debug等级
-                break;
-            case INFO:
-                i(tag, msg);// info等级
-                break;
-            case WARN:
-                w(tag, msg);// warn等级
-                break;
-            case ERROR:
-                e(tag, msg);// error等级
-                break;
-            default:
-                break;
-        }
-    }
-    public static void log(String tag, String msg) {
-                d(tag, msg);// debug等级
+    public static void verbose(String message) {
+        verbose("", message);
     }
 
     /**
-     * verbose等级的日志输出
+     * Verbose.
      *
-     * @param tag
-     *            日志标识
-     * @param msg
-     *            要输出的内容
-     * @return void 返回类型
-     * @throws
+     * @param object  the object
+     * @param message the message
      */
-    public static void v(String tag, String msg) {
-        // 是否开启日志输出
-        if (isDeBug) {
+    public static void verbose(Object object, String message) {
+        verbose(object.getClass().getSimpleName(), message);
+    }
+
+    /**
+     * 记录“verbose”级别的信息
+     *
+     * @param tag the tag
+     * @param msg the msg
+     */
+    public static void verbose(String tag, String msg) {
+        if (isDebug) {
+            tag = debugTag + ((tag == null || tag.trim().length() == 0) ? "" : "-") + tag;
+            msg = msg + getTraceElement();
             Log.v(tag, msg);
         }
-        // 是否将日志写入文件
-        if (isWrite) {
-            write(tag, msg);
-        }
     }
 
     /**
-     * debug等级的日志输出
+     * Debug.
      *
-     * @param tag
-     *            标识
-     * @param msg
-     *            内容
-     * @return void 返回类型
-     * @throws
+     * @param message the message
      */
-    public static void d(String tag, String msg) {
-//
-//        if(xml.length() > 4000) {
-//            for(int i=0;i<xml.length();i+=4000){
-//                if(i+4000<xml.length())
-//                    Log.i("rescounter"+i,xml.substring(i, i+4000));
-//                else
-//                    Log.i("rescounter"+i,xml.substring(i, xml.length()));
-//            }
-//        } else
-//            Log.i("resinfo",xml);
-//    }
-        if (isDeBug) {
+    public static void debug(String message) {
+        debug("", message);
+    }
+
+    /**
+     * Debug.
+     *
+     * @param object  the object
+     * @param message the message
+     */
+    public static void debug(Object object, String message) {
+        debug(object.getClass().getSimpleName(), message);
+    }
+
+    /**
+     * 记录“debug”级别的信息
+     *
+     * @param tag the tag
+     * @param msg the msg
+     */
+    public static void debug(String tag, String msg) {
+        if (isDebug) {
+            tag = debugTag + ((tag == null || tag.trim().length() == 0) ? "" : "-") + tag;
+            msg = msg + getTraceElement();
             Log.d(tag, msg);
         }
-        if (isWrite) {
-            write(tag, msg);
-        }
     }
 
     /**
-     * info等级的日志输出
+     * Warn.
      *
-     * @param  tag 标识
-     * @param  msg 内容
-     * @return void 返回类型
-     * @throws
+     * @param e the e
      */
-    public static void i(String tag, String msg) {
-        if (isDeBug) {
-            Log.i(tag, msg);
-        }
-        if (isWrite) {
-            write(tag, msg);
-        }
+    public static void warn(Throwable e) {
+        warn(toStackTraceString(e));
     }
 
     /**
-     * warn等级的日志输出
+     * Warn.
      *
-     * @param tag 标识
-     * @param msg 内容
-     * @return void 返回类型
-     * @throws
+     * @param message the message
      */
-    public static void w(String tag, String msg) {
-        if (isDeBug) {
+    public static void warn(String message) {
+        warn("", message);
+    }
+
+    /**
+     * Warn.
+     *
+     * @param object  the object
+     * @param message the message
+     */
+    public static void warn(Object object, String message) {
+        warn(object.getClass().getSimpleName(), message);
+    }
+
+    /**
+     * Warn.
+     *
+     * @param object the object
+     * @param e      the e
+     */
+    public static void warn(Object object, Throwable e) {
+        warn(object.getClass().getSimpleName(), toStackTraceString(e));
+    }
+
+    /**
+     * 记录“warn”级别的信息
+     *
+     * @param tag the tag
+     * @param msg the msg
+     */
+    public static void warn(String tag, String msg) {
+        if (isDebug) {
+            tag = debugTag + ((tag == null || tag.trim().length() == 0) ? "" : "-") + tag;
+            msg = msg + getTraceElement();
             Log.w(tag, msg);
         }
-        if (isWrite) {
-            write(tag, msg);
+    }
+
+    /**
+     * Error.
+     *
+     * @param e the e
+     */
+    public static void error(Throwable e) {
+        error(toStackTraceString(e));
+    }
+
+    /**
+     * Error.
+     *
+     * @param message the message
+     */
+    public static void error(String message) {
+        error("", message);
+    }
+
+    /**
+     * Error.
+     *
+     * @param object  the object
+     * @param message the message
+     */
+    public static void error(Object object, String message) {
+        error(object.getClass().getSimpleName(), message);
+    }
+
+    /**
+     * Error.
+     *
+     * @param object the object
+     * @param e      the e
+     */
+    public static void error(Object object, Throwable e) {
+        error(object.getClass().getSimpleName(), toStackTraceString(e));
+    }
+
+    /**
+     * 记录“error”级别的信息
+     *
+     * @param tag the tag
+     * @param msg the msg
+     */
+    public static void error(String tag, String msg) {
+        if (isDebug) {
+            tag = debugTag + ((tag == null || tag.trim().length() == 0) ? "" : "-") + tag;
+            msg = msg + getTraceElement();
+            Log.e(tag, msg);
         }
     }
 
     /**
-     * error等级的日志输出
+     * 在某个方法中调用生成.trace文件。然后拿到电脑上用DDMS工具打开分析
      *
-     * @param  tag 标识
-     * @param  msg 内容
-     * @return void 返回类型
+     * @see #stopMethodTracing()
      */
-    public static void e(String tag, String msg) {
-        if (isDeBug) {
-            Log.w(tag, msg);
-        }
-        if (isWrite) {
-            write(tag, msg);
+    public static void startMethodTracing() {
+        if (isDebug) {
+            Debug.startMethodTracing(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + debugTag + ".trace");
         }
     }
 
     /**
-     * 用于把日志内容写入制定的文件
-     *
-     * @param @param tag 标识
-     * @param @param msg 要输出的内容
-     * @return void 返回类型
-     * @throws
+     * Stop method tracing.
      */
-    public static void write(String tag, String msg) {
-        String path = FileUtils.createMkdirsAndFiles(DIRPATH, LOGNAME);
-        if (TextUtils.isEmpty(path)) {
-            return;
+    public static void stopMethodTracing() {
+        if (isDebug) {
+            Debug.stopMethodTracing();
         }
-        String log = DateFormat.format(INFORMAT, System.currentTimeMillis())
-                + tag
-                + "========>>"
-                + msg
-                + "\n=================================分割线=================================";
-        FileUtils.write2File(path, log, true);
     }
 
     /**
-     * 用于把日志内容写入制定的文件
+     * To stack trace string string.
+     * <p>
+     * 此方法参见：https://github.com/Ereza/CustomActivityOnCrash
      *
-     * @param
-     *
-     * @param ex
-     *            异常
+     * @param throwable the throwable
+     * @return the string
      */
-    public static void write(Throwable ex) {
-        write("", exToString(ex));
+    public static String toStackTraceString(Throwable throwable) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        throwable.printStackTrace(pw);
+        String stackTraceString = sw.toString();
+        //Reduce data to 128KB so we don't get a TransactionTooLargeException when sending the intent.
+        //The limit is 1MB on Android but some devices seem to have it lower.
+        //See: http://developer.android.com/reference/android/os/TransactionTooLargeException.html
+        //And: http://stackoverflow.com/questions/11451393/what-to-do-on-transactiontoolargeexception#comment46697371_12809171
+        if (stackTraceString.length() > MAX_STACK_TRACE_SIZE) {
+            String disclaimer = " [stack trace too large]";
+            stackTraceString = stackTraceString.substring(0, MAX_STACK_TRACE_SIZE - disclaimer.length()) + disclaimer;
+        }
+        pw.close();
+        return stackTraceString;
     }
 
     /**
-     * 把异常信息转化为字符串
-     *
-     * @param ex 异常信息
-     * @return 异常信息字符串
+     * 可显示调用方法所在的文件行号，在AndroidStudio的logcat处可点击定位。
+     * 此方法参考：https://github.com/orhanobut/logger
      */
-    private static String exToString(Throwable ex) {
-        Writer writer = new StringWriter();
-        PrintWriter printWriter = new PrintWriter(writer);
-        ex.printStackTrace(printWriter);
-        printWriter.close();
-        String result = writer.toString();
-        return result;
+    private static String getTraceElement() {
+        try {
+            int methodCount = METHOD_COUNT;
+            StackTraceElement[] trace = Thread.currentThread().getStackTrace();
+            int stackOffset = _getStackOffset(trace);
+
+            //corresponding method count with the current stack may exceeds the stack trace. Trims the count
+            if (methodCount + stackOffset > trace.length) {
+                methodCount = trace.length - stackOffset - 1;
+            }
+
+            String level = "    ";
+            StringBuilder builder = new StringBuilder();
+            for (int i = methodCount; i > 0; i--) {
+                int stackIndex = i + stackOffset;
+                if (stackIndex >= trace.length) {
+                    continue;
+                }
+                builder.append("\n")
+                        .append(level)
+                        .append(_getSimpleClassName(trace[stackIndex].getClassName()))
+                        .append(".")
+                        .append(trace[stackIndex].getMethodName())
+                        .append(" ")
+                        .append("(")
+                        .append(trace[stackIndex].getFileName())
+                        .append(":")
+                        .append(trace[stackIndex].getLineNumber())
+                        .append(")");
+                level += "    ";
+            }
+            return builder.toString();
+        } catch (Exception e) {
+            Log.w(debugTag, e);
+            return "";
+        }
     }
+
+    /**
+     * Determines the starting index of the stack trace, after method calls made by this class.
+     *
+     * @param trace the stack trace
+     * @return the stack offset
+     */
+    private static int _getStackOffset(StackTraceElement[] trace) {
+        for (int i = MIN_STACK_OFFSET; i < trace.length; i++) {
+            StackTraceElement e = trace[i];
+            String name = e.getClassName();
+            if (!name.equals(LogUtils.class.getName())) {
+                return --i;
+            }
+        }
+        return -1;
+    }
+
+    private static String _getSimpleClassName(String name) {
+        int lastIndex = name.lastIndexOf(".");
+        return name.substring(lastIndex + 1);
+    }
+
 }

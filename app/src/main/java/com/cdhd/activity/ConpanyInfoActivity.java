@@ -110,45 +110,51 @@ public class ConpanyInfoActivity extends ActivityBase implements EnterpriseInter
 
     @Override
     public void showData(EnterpriseData data) {
-        edt1.setText(data.getData().getEnterpriseName());
-        edt2.setText(data.getData().getLinkAddress());
-        edt3.setText(data.getData().getLicenseCode());
-        edt4.setText(data.getData().getFaxNumber());
-        edt5.setText(data.getData().getLinkAddress());
-        edt6.setText(data.getData().getWebsite());
-        edt7.setText(data.getData().getEnterpriseAbstract());
 
-        //初始化
-        pics = new ArrayList<>();
+        if (data.isSuccess()) {
 
-        for (int i = 0; i < data.getData().getImages().size(); i++) {
-            //加入List
-            pics.add(data.getData().getImages().get(i));
-            SimpleDraweeView simpview = new SimpleDraweeView(ConpanyInfoActivity.this);
-            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
-            simpview.setLayoutParams(parms);
-            simpview.setImageURI(ApiUrl.SERVICE_URL + data.getData().getImages().get(i));
+            edt1.setText(data.getData().getEnterpriseName());
+            edt2.setText(data.getData().getLinkAddress());
+            edt3.setText(data.getData().getLicenseCode());
+            edt4.setText(data.getData().getFaxNumber());
+            edt5.setText(data.getData().getLinkAddress());
+            edt6.setText(data.getData().getWebsite());
+            edt7.setText(data.getData().getEnterpriseAbstract());
 
-            TextView textView = new TextView(this);
-            textView.setText("删 除");
-            textView.setBackgroundColor(getResources().getColor(R.color.black));
-            FrameLayout.LayoutParams parms1 = new FrameLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 20));
-            parms1.gravity = Gravity.BOTTOM;
-            textView.setLayoutParams(parms1);
-            textView.setAlpha((float) 0.7);
-            textView.setTextColor(getResources().getColor(R.color.white));
-            textView.setTextSize(8);
-            textView.setGravity(Gravity.CENTER);
-            final FrameLayout frameLayout = new FrameLayout(this);
+            //初始化
+            pics = new ArrayList<>();
 
-            LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
-            params2.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
-            params2.gravity = Gravity.CENTER_VERTICAL;
-            frameLayout.setLayoutParams(params2);
-            frameLayout.addView(simpview);
-            frameLayout.addView(textView);
-            addimgLl.addView(frameLayout);
+            for (int i = 0; i < data.getData().getImages().size(); i++) {
+                //加入List
+                pics.add(data.getData().getImages().get(i));
+                SimpleDraweeView simpview = new SimpleDraweeView(ConpanyInfoActivity.this);
+                LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+                simpview.setLayoutParams(parms);
+                simpview.setImageURI(ApiUrl.SERVICE_URL + data.getData().getImages().get(i));
 
+                TextView textView = new TextView(this);
+                textView.setText("删 除");
+                textView.setBackgroundColor(getResources().getColor(R.color.black));
+                FrameLayout.LayoutParams parms1 = new FrameLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 20));
+                parms1.gravity = Gravity.BOTTOM;
+                textView.setLayoutParams(parms1);
+                textView.setAlpha((float) 0.7);
+                textView.setTextColor(getResources().getColor(R.color.white));
+                textView.setTextSize(8);
+                textView.setGravity(Gravity.CENTER);
+                final FrameLayout frameLayout = new FrameLayout(this);
+
+                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+                params2.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
+                params2.gravity = Gravity.CENTER_VERTICAL;
+                frameLayout.setLayoutParams(params2);
+                frameLayout.addView(simpview);
+                frameLayout.addView(textView);
+                addimgLl.addView(frameLayout);
+
+            }
+        }else {
+            ToastExUtils.showMassegeInfo(this,data.getMessage());
         }
     }
 

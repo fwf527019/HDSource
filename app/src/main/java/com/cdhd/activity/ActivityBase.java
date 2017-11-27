@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.cdhd.R;
+import com.cdhd.utils.LoadingDialog;
 import com.cdhd.utils.StatusBarUtil;
 
 
@@ -37,7 +38,8 @@ public abstract class ActivityBase extends FragmentActivity {
          //  getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         }
-
+        //设置软键盘不弹出
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(getContentViewResId());
         StatusBarUtil.setColor(this,getResources().getColor(R.color.main_green));
         //状态栏高度
@@ -142,26 +144,8 @@ public abstract class ActivityBase extends FragmentActivity {
     }
 
 
-//    /**
-//     * 递归调用，对所有子Fragement生效
-//     *
-//     * @param frag
-//     * @param requestCode
-//     * @param resultCode
-//     * @param data
-//     */
-//
-//    private void handleResult(Fragment frag, int requestCode, int resultCode,
-//                              Intent data) {
-//        frag.onActivityResult(requestCode & 0xffff, resultCode, data);
-//        List<Fragment> frags = frag.getChildFragmentManager().getFragments();
-//        if (frags != null) {
-//            for (Fragment f : frags) {
-//                if (f != null)
-//                    handleResult(f, requestCode, resultCode, data);
-//            }
-//        }
-//    }
+
+
 
 
 
@@ -175,34 +159,25 @@ public abstract class ActivityBase extends FragmentActivity {
         return ((ViewGroup)context.findViewById(android.R.id.content)).getChildAt(0);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        FragmentManager fm = getSupportFragmentManager();
-//        int index = requestCode >> 16;
-//        if (index != 0) {
-//            index--;
-//            if (fm.getFragments() == null || index < 0
-//                    || index >= fm.getFragments().size()) {
-//                Log.w(TAG, "Activity result fragment index out of range: 0x"
-//                        + Integer.toHexString(requestCode));
-//                return;
-//            }
-//            Fragment frag = fm.getFragments().get(index);
-//            if (frag == null) {
-//                Log.w(TAG, "Activity result no fragment exists for index: 0x"
-//                        + Integer.toHexString(requestCode));
-//            } else {
-//                handleResult(frag, requestCode, resultCode, data);
-//            }
-//            return;
-//        }
-//
-//    }
 
 
 
 
+    /**
+     * 开启浮动加载进度条
+     *
+     * @param msg
+     */
+    public void startProgressDialog(String msg) {
+        LoadingDialog.showDialogForLoading(this, msg, true);
+    }
 
+    /**
+     * 停止浮动加载进度条
+     */
+    public void stopProgressDialog() {
+        LoadingDialog.cancelDialogForLoading();
+    }
 
 }
 

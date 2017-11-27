@@ -208,6 +208,7 @@
             </LinearLayout>
 
             <HorizontalScrollView
+                android:scrollbars="none"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="15dp">
@@ -240,6 +241,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginBottom="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn_bgs1"

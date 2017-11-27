@@ -6,8 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ import com.cdhd.App;
 import com.cdhd.R;
 import com.cdhd.presenter.GetLoginData;
 import com.cdhd.response.LoginData;
+import com.cdhd.utils.ToastExUtils;
 import com.cdhd.view.LoginInterface;
 
 import butterknife.BindView;
@@ -36,6 +40,12 @@ public class LoginActivity extends ActivityBase implements LoginInterface {
     EditText password;
     @BindView(R.id.logn_bt)
     Button lognBt;
+    @BindView(R.id.titail_right)
+    LinearLayout titailRight;
+    @BindView(R.id.remenberpsw_box)
+    CheckBox remenberpswBox;
+    @BindView(R.id.isauto_box)
+    CheckBox isautoBox;
     private GetLoginData getLoginData;
     private String userName;
     private String psw;
@@ -61,7 +71,49 @@ public class LoginActivity extends ActivityBase implements LoginInterface {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+        back.setVisibility(View.GONE);
         titail.setText("登录");
+        SharedPreferences sp = getSharedPreferences("user_data", Context.MODE_PRIVATE);
+
+        if (sp.getString("remPsw", "0").equals("1")) {
+            username.setText(sp.getString("account", ""));
+            password.setText(sp.getString("psw", ""));
+            remenberpswBox.setChecked(true);
+        }
+        if (sp.getString("auto", "0").equals("1")) {
+            userName = username.getText().toString().trim();
+            psw = password.getText().toString().trim();
+            startProgressDialog("登录中...");
+            isautoBox.setChecked(true);
+            getLoginData.GotoLogin(userName, psw, true, false);
+        }
+
+        final SharedPreferences.Editor editor = sp.edit();
+        isautoBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editor.putString("auto", "1");
+                    editor.commit();
+                } else {
+                    editor.putString("auto", "0");
+                    editor.commit();
+                }
+            }
+        });
+        remenberpswBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editor.putString("remPsw", "1");
+                    editor.commit();
+                } else {
+                    editor.putString("remPsw", "0");
+                    editor.commit();
+                }
+
+            }
+        });
     }
 
     @OnClick({R.id.back, R.id.logn_bt})
@@ -87,13 +139,14 @@ public class LoginActivity extends ActivityBase implements LoginInterface {
     }
 
     private void gotoLogin() {
+        startProgressDialog(" 登录中...");
         getLoginData.GotoLogin(userName, psw, true, false);
-
 
     }
 
     @Override
     public void showLoginResult(LoginData data) {
+        stopProgressDialog();
         if (data.isSuccess()) {
             App.setOriginToken(data.getData().getUserToken());
             //保存用户信息
@@ -102,17 +155,19 @@ public class LoginActivity extends ActivityBase implements LoginInterface {
             editor.putString("name", data.getData().getUserName());
             editor.putString("RoleName", data.getData().getRoleName());
             editor.putString("UserToken", data.getData().getUserToken());
+            editor.putString("account", userName);
             editor.putString("psw", psw);
             editor.commit();
             startActivity(new Intent(this, MainActivity.class));
-        }else {
-            Toast.makeText(this, data.getMessage(), Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            ToastExUtils.showMassegeInfo(this, data.getMessage());
         }
     }
 
     @Override
     public void error() {
+        stopProgressDialog();
         Toast.makeText(this, "网络错误", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, MainActivity.class));
     }
 }
