@@ -20,6 +20,12 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="75dp"
             android:layout_height="75dp"
+            fresco:roundedCornerRadius="5dp"
+            fresco:roundTopLeft="true"
+            fresco:roundTopRight="true"
+            fresco:roundBottomLeft="true"
+            fresco:roundBottomRight="true"
+            android:id="@+id/item_pic"
             android:layout_gravity="center_vertical"
             fresco:placeholderImage="@drawable/nopic"
             fresco:placeholderImageScaleType="fitXY" />

@@ -2,8 +2,10 @@ package com.cdhd.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,10 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cdhd.ApiUrl;
 import com.cdhd.R;
 import com.cdhd.presenter.GetMianPageData;
 import com.cdhd.response.MainListData;
 import com.cdhd.view.MainPageInterface;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -170,9 +174,6 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
                 break;
 
             case R.id.titail:
-                //   keyWord = sherchpageEdt.getText().toString();
-
-                startActivity(new Intent(this, ProduceEditerActivity.class));
                 break;
         }
     }
@@ -199,14 +200,14 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
                     Log.d("MainActivity", result);
                     // http://192.168.1.14:803/Origin/Batch?batchId=2
                     if (result.contains("Origin/Batch?batchId")) {
-                        String regEx=".+batchId=(.+)$";
-                        Pattern pattern=Pattern.compile(regEx);
-                        Matcher matcher=pattern.matcher(result);
+                        String regEx = ".+batchId=(.+)$";
+                        Pattern pattern = Pattern.compile(regEx);
+                        Matcher matcher = pattern.matcher(result);
                         boolean rs = matcher.find();
-                        String batchId =  matcher.group(1);
+                        String batchId = matcher.group(1);
 
                         startActivity(new Intent(MainActivity.this, ProduceEditerActivity.class).putExtra("id", batchId));
-                    }else {
+                    } else {
                         Toast.makeText(this, "请扫描汇东产品", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -225,6 +226,8 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
         @Override
         public void onBind(ItemView itemView, final MainListData.DataBean dataBean, int i) {
             //绑定数据
+            ((SimpleDraweeView) (itemView.getView(R.id.item_pic))).setImageURI(ApiUrl.SERVICE_URL + dataBean.getProduct().getProductImage());
+
             itemView.setText(R.id.item_titail, dataBean.getProduct().getProductName());
             itemView.setText(R.id.item_sourcenum, "溯源码:" + dataBean.getOriginCode());
             itemView.setText(R.id.item_batchnum, "批次号:" + dataBean.getBatchCode());
@@ -277,5 +280,25 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
         refreshLayout.finishLoadmore();
     }
 
+    private long exitTime = 0;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            if ((System.currentTimeMillis() - exitTime) > 2000)  //System.currentTimeMillis()无论何时调用，肯定大于2000
+            {
+                Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+
+    }
 
 }

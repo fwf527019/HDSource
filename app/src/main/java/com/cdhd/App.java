@@ -53,7 +53,7 @@ public class App extends Application {
         SmartRefreshLayout.setDefaultRefreshHeaderCreater(new DefaultRefreshHeaderCreater() {
             @Override
             public RefreshHeader createRefreshHeader(Context context, RefreshLayout layout) {
-                layout.setPrimaryColorsId(R.color.colorPrimary, android.R.color.white);//全局设置主题颜色
+                layout.setPrimaryColorsId(R.color.main_green, android.R.color.white);//全局设置主题颜色
                 layout.setRefreshHeader(new WaterDropHeader(context));
                 return new ClassicsHeader(context);//指定为经典Header，默认是 贝塞尔雷达Header
             }

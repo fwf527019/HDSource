@@ -103,7 +103,8 @@ public class PlaceInfoActivity extends ActivityBase implements PlaceInterface {
                 finish();
                 break;
             case R.id.logn_bt:
-                Toast.makeText(this, "基地信息不能编辑", Toast.LENGTH_SHORT).show();
+                finish();
+           //     Toast.makeText(this, "基地信息不能编辑", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -155,7 +156,7 @@ public class PlaceInfoActivity extends ActivityBase implements PlaceInterface {
                 params2.gravity = Gravity.CENTER_VERTICAL;
                 frameLayout.setLayoutParams(params2);
                 frameLayout.addView(simpview);
-                frameLayout.addView(textView);
+             //   frameLayout.addView(textView);
                 addimgLl.addView(frameLayout);
 
             }

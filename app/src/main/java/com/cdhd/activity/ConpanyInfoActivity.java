@@ -98,7 +98,8 @@ public class ConpanyInfoActivity extends ActivityBase implements EnterpriseInter
                 finish();
                 break;
             case R.id.logn_bt:
-                Toast.makeText(this, "企业信息不能编辑!", Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(this, "企业信息不能编辑!", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
         }
     }
@@ -149,12 +150,12 @@ public class ConpanyInfoActivity extends ActivityBase implements EnterpriseInter
                 params2.gravity = Gravity.CENTER_VERTICAL;
                 frameLayout.setLayoutParams(params2);
                 frameLayout.addView(simpview);
-                frameLayout.addView(textView);
+           //     frameLayout.addView(textView);
                 addimgLl.addView(frameLayout);
 
             }
-        }else {
-            ToastExUtils.showMassegeInfo(this,data.getMessage());
+        } else {
+            ToastExUtils.showMassegeInfo(this, data.getMessage());
         }
     }
 

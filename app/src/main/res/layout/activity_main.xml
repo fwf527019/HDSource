@@ -31,7 +31,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center"
-
                     android:text="输入产品名称，溯源码，批次号"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
@@ -48,6 +47,7 @@
                         android:id="@+id/search_edt"
                         android:imeOptions="actionSearch"
                         android:layout_width="match_parent"
+                        android:paddingLeft="10dp"
                         android:singleLine="true"
                         android:layout_height="45dp"
                         android:background="@null" />

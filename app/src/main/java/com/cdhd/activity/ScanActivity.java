@@ -23,7 +23,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/2/23.
  */
 
-public class ScanActivity extends AppCompatActivity {
+public class ScanActivity extends ActivityBase {
     @BindView(R.id.scan_back)
     ImageView scanBack;
     @BindView(R.id.scan_tv)
@@ -34,10 +34,7 @@ public class ScanActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //初始化ZX
-
         ZXingLibrary.initDisplayOpinion(this);
-
-        setContentView(R.layout.activity_scan);
         ButterKnife.bind(this);
         initView();
         scanTv.setAlpha((float) 0.8);
@@ -45,9 +42,25 @@ public class ScanActivity extends AppCompatActivity {
         //执行扫面Fragment的初始化操作
         CaptureFragment captureFragment = new CaptureFragment();
         // 为二维码扫描界面设置定制化界面
-        CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera);
+        //CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera);
+
         captureFragment.setAnalyzeCallback(analyzeCallback);
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_my_container, captureFragment).commit();
+    }
+
+    @Override
+    protected int getContentViewResId() {
+        return R.layout.activity_scan;
+    }
+
+    @Override
+    protected void initViews() {
+
+    }
+
+    @Override
+    protected void initDatas() {
+
     }
 
     private void initView() {
@@ -85,7 +98,7 @@ public class ScanActivity extends AppCompatActivity {
 
     @OnClick(R.id.scan_back)
     public void onClick() {
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
@@ -93,7 +106,7 @@ public class ScanActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             //TODO something
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             finish();
             return true;
         }

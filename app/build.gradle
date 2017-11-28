@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -26,16 +27,14 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
-
     //android相册
     compile 'com.yanzhenjie:album:1.0.0' //http://blog.csdn.net/yanzhenjie1003
-
     //权限管理
     compile 'com.yanzhenjie:permission:1.0.8'
     //稳定版 刷新框架（）
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'
-//没有使用特殊Header，可以不加这行https://github.com/scwang90/SmartRefreshLayout
+    //没有使用特殊Header，可以不加这行https://github.com/scwang90/SmartRefreshLayout
     //网络框架
     compile 'com.zhy:okhttputils:2.6.2'
     //黄油刀
@@ -52,7 +51,6 @@ dependencies {
     //android相册
     compile 'com.yanzhenjie:album:1.0.0' //http://blog.csdn.net/yanzhenjie1003
     compile 'com.alibaba:fastjson:1.2.24'
-    // compile  'com.jaeger.statusbarutil:library:1.4.0'
-    //选择器
-    //compile 'com.github.addappcn:android-pickers:1.0.1'
+
+
 }
