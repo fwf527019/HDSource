@@ -91,12 +91,15 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
-        titail.setText("首页");
+        initView();
 
+    }
+
+    private void initView() {
+        titail.setText("首页");
         // back.setText("我的");
         back.setBackgroundResource(R.mipmap.header_ico);
         titailRight.setVisibility(View.VISIBLE);
-
         //刷新
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -133,7 +136,6 @@ public class MainActivity extends ActivityBase implements MainPageInterface {
                 return false;
             }
         });
-
     }
 
     @OnClick({R.id.back, R.id.titail_right, R.id.titail})

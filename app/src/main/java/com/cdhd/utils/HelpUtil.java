@@ -189,7 +189,7 @@ public class HelpUtil {
      * @param image
      * @return
      */
-    public static Bitmap compressImage(Bitmap image) {
+ /**   public static Bitmap compressImage(Bitmap image) {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
@@ -202,7 +202,49 @@ public class HelpUtil {
         }
         ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
         Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
-        return bitmap;
+       return bitmap;
+
+
     }
+
+***/
+
+    /**
+     * 图片质量压缩（质量参数)
+     * @param image
+     * @param quality 质量参数 百分之多少 例如:0.6  0.7
+     * @return
+     */
+    public static Bitmap compressImage(Bitmap image, float quality)
+    {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, (int)quality*100, baos);
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+        return BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
+    }
+
+    /**
+     * 图片质量压缩（质量参数)
+     * @param image
+     * @return
+     */
+    public static Bitmap compressImage(Bitmap image)
+    {
+        float quality= (float) 0.01;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, (int)quality*100, baos);
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
+        return BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
+    }
+
+
+
+
+
+
+
+
+
 
 }

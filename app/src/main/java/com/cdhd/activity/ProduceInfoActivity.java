@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,7 +58,7 @@ public class ProduceInfoActivity extends ActivityBase implements ProduceInterfac
     @BindView(R.id.titail_right)
     LinearLayout titailRight;
     @BindView(R.id.edt_1)
-    EditText edt1;
+    TextView edt1;
     @BindView(R.id.edt_2)
     EditText edt2;
     @BindView(R.id.edt_3)
@@ -82,6 +83,10 @@ public class ProduceInfoActivity extends ActivityBase implements ProduceInterfac
     LinearLayout timeLl;
     @BindView(R.id.spnner)
     Spinner spnner;
+    @BindView(R.id.ll_pic)
+    LinearLayout llPic;
+    @BindView(R.id.scrollView)
+    ScrollView scrollView;
     private GetProduceData getProduceData;
     private String batchId;
     private List<String> pics;
@@ -307,10 +312,10 @@ public class ProduceInfoActivity extends ActivityBase implements ProduceInterfac
                     @Override
                     public void onClick(View v) {
                         //在父容器中的位置
-                        int index = ((ViewGroup) v.getParent()).indexOfChild(v);
+                        int index = ((ViewGroup) frameLayout.getParent()).indexOfChild(frameLayout);
                         pics.remove(index);
-                        addimgLl.removeView(frameLayout);
-
+                        //  addimgLl.removeView(frameLayout);
+                        addimgLl.removeViewAt(index);
 
                         Log.d("ProduceInfoActivity", "picNum:" + picNum);
                         //移除List<String>
@@ -320,6 +325,7 @@ public class ProduceInfoActivity extends ActivityBase implements ProduceInterfac
                         } else {
                             addimg.setVisibility(View.GONE);
                         }
+                        scrollView.scrollBy(0,-1);
                     }
                 });
 
@@ -346,64 +352,146 @@ public class ProduceInfoActivity extends ActivityBase implements ProduceInterfac
                 }
                 for (int i = 0; i < path.size(); i++) {
                     Uri uri = Uri.fromFile(new File(path.get(i)));
-                    try {
-                        bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    Bitmap bit = HelpUtil.compressImage(bitmap);
-                    String picSt = "data:image/jpeg;base64," + HelpUtil.bitmapToBase64(bit);
-                    Log.d("BaseInfoActivity", picSt);
-                    pics.add(picSt);
+//                    try {
+//                        bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+//                    } catch (FileNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
+//                    //   Bitmap bit = HelpUtil.compressImage(bitmap);
+//                    Bitmap bit = HelpUtil.compressImage(bitmap, (float) 0.5);
+//                    String picSt = "data:image/jpeg;base64," + HelpUtil.bitmapToBase64(bit);
+//                    Log.d("BaseInfoActivity", picSt);
+//                    pics.add(picSt);
+//
+//                    SimpleDraweeView simpview = new SimpleDraweeView(ProduceInfoActivity.this);
+//                    LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+//                    parms.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
+//                    simpview.setLayoutParams(parms);
+//                    simpview.setImageURI(uri);
+//
+//                    TextView textView = new TextView(this);
+//                    textView.setText("删 除");
+//                    textView.setBackgroundColor(getResources().getColor(R.color.black));
+//                    FrameLayout.LayoutParams parms1 = new FrameLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 20));
+//                    parms1.gravity = Gravity.BOTTOM;
+//                    textView.setLayoutParams(parms1);
+//                    textView.setAlpha((float) 0.7);
+//                    textView.setTextColor(getResources().getColor(R.color.white));
+//                    textView.setTextSize(8);
+//                    textView.setGravity(Gravity.CENTER);
+//                    final FrameLayout frameLayout = new FrameLayout(this);
+//
+//                    LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+//                    params2.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
+//                    params2.gravity = Gravity.CENTER_VERTICAL;
+//                    frameLayout.setLayoutParams(params2);
+//                    frameLayout.addView(simpview);
+//                    frameLayout.addView(textView);
+//                    addimgLl.addView(frameLayout);
+//
+//                    frameLayout.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            addimgLl.removeView(frameLayout);
+//                            int index = ((ViewGroup) v.getParent()).indexOfChild(v);
+//                            pics.remove(index);
+//                            picNum -= 1;
+//                            Log.d("ProduceInfoActivity", "picNum:" + picNum);
+//                            if (picNum < 9) {
+//                                addimg.setVisibility(View.VISIBLE);
+//                            } else {
+//                                addimg.setVisibility(View.GONE);
+//                            }
+//
+//                        }
+//                    });
 
-                    SimpleDraweeView simpview = new SimpleDraweeView(ProduceInfoActivity.this);
-                    LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
-                    parms.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
-                    simpview.setLayoutParams(parms);
-                    simpview.setImageURI(uri);
 
-                    TextView textView = new TextView(this);
-                    textView.setText("删 除");
-                    textView.setBackgroundColor(getResources().getColor(R.color.black));
-                    FrameLayout.LayoutParams parms1 = new FrameLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 20));
-                    parms1.gravity = Gravity.BOTTOM;
-                    textView.setLayoutParams(parms1);
-                    textView.setAlpha((float) 0.7);
-                    textView.setTextColor(getResources().getColor(R.color.white));
-                    textView.setTextSize(8);
-                    textView.setGravity(Gravity.CENTER);
-                    final FrameLayout frameLayout = new FrameLayout(this);
-
-                    LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
-                    params2.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
-                    params2.gravity = Gravity.CENTER_VERTICAL;
-                    frameLayout.setLayoutParams(params2);
-                    frameLayout.addView(simpview);
-                    frameLayout.addView(textView);
-                    addimgLl.addView(frameLayout);
-
-                    frameLayout.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            addimgLl.removeView(frameLayout);
-                            int index = ((ViewGroup) v.getParent()).indexOfChild(v);
-                            pics.remove(index);
-                            picNum -= 1;
-                            Log.d("ProduceInfoActivity", "picNum:" + picNum);
-                            if (picNum < 9) {
-                                addimg.setVisibility(View.VISIBLE);
-                            } else {
-                                addimg.setVisibility(View.GONE);
-                            }
-
-                        }
-                    });
-
+                    setPic(uri);
 
                 }
             }
         }
     }
 
+
+    private void setPic(Uri uri) {
+        //获取目标控件的大小
+        int targetW = dip2px(getApplicationContext(), 70);
+        int targetH = dip2px(getApplicationContext(), 70);
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        try {
+            //inJustDecodeBounds为true，可以加载源图片的尺寸大小，decodeStream方法返回的bitmap为null
+            bmOptions.inJustDecodeBounds = true;
+            BitmapFactory.decodeStream(ProduceInfoActivity.this.getContentResolver().openInputStream(uri), null, bmOptions);
+            // 得到源图片的尺寸
+            int photoW = bmOptions.outWidth;
+            int photoH = bmOptions.outHeight;
+
+            //通过比较获取较小的缩放比列
+            int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
+            // 将inJustDecodeBounds置为false，设置bitmap的缩放比列
+            bmOptions.inJustDecodeBounds = false;
+            bmOptions.inSampleSize = scaleFactor;
+            bmOptions.inPurgeable = true;
+            //再次decode获取bitmap
+            Bitmap bitmap = BitmapFactory.decodeStream(ProduceInfoActivity.this.getContentResolver().openInputStream(uri), null, bmOptions);
+
+
+            String picSt = "data:image/jpeg;base64," + HelpUtil.bitmapToBase64(bitmap);
+            Log.d("BaseInfoActivity", picSt);
+            pics.add(picSt);
+
+            SimpleDraweeView simpview = new SimpleDraweeView(ProduceInfoActivity.this);
+            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+            parms.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
+            simpview.setLayoutParams(parms);
+            simpview.setImageURI(uri);
+
+            TextView textView = new TextView(this);
+            textView.setText("删 除");
+            textView.setBackgroundColor(getResources().getColor(R.color.black));
+            FrameLayout.LayoutParams parms1 = new FrameLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 20));
+            parms1.gravity = Gravity.BOTTOM;
+            textView.setLayoutParams(parms1);
+            textView.setAlpha((float) 0.7);
+            textView.setTextColor(getResources().getColor(R.color.white));
+            textView.setTextSize(8);
+            textView.setGravity(Gravity.CENTER);
+            final FrameLayout frameLayout = new FrameLayout(this);
+
+            LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(dip2px(getApplicationContext(), 60), dip2px(getApplicationContext(), 60));
+            params2.setMargins(dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10), dip2px(getApplicationContext(), 10));
+            params2.gravity = Gravity.CENTER_VERTICAL;
+            frameLayout.setLayoutParams(params2);
+            frameLayout.addView(simpview);
+            frameLayout.addView(textView);
+            addimgLl.addView(frameLayout);
+
+            frameLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int index = ((ViewGroup) frameLayout.getParent()).indexOfChild(frameLayout);
+                    addimgLl.removeView(frameLayout);
+                    pics.remove(index);
+                    picNum -= 1;
+                    Log.d("ProduceInfoActivity", "picNum:" + picNum);
+//                    if (picNum < 9) {
+//                        addimg.setVisibility(View.VISIBLE);
+//                    } else {
+//                        addimg.setVisibility(View.GONE);
+//                    }
+                    addimg.setVisibility(View.VISIBLE);
+                    // llPic.setVisibility(View.VISIBLE);
+                    scrollView.scrollBy(0,-1);
+
+                }
+            });
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

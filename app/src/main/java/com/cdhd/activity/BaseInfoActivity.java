@@ -30,6 +30,8 @@ import com.cdhd.view.EssentialInfoInterface;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.yanzhenjie.album.Album;
 
+import org.w3c.dom.Text;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -58,7 +60,7 @@ public class BaseInfoActivity extends ActivityBase implements EssentialInfoInter
     @BindView(R.id.addimg)
     ImageView addimg;
     @BindView(R.id.produce_name)
-    EditText produceName;
+    TextView produceName;
     @BindView(R.id.produce_content)
     EditText produceContent;
 

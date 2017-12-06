@@ -106,15 +106,15 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
     public void showProduceInfo(BatchAllData.DataBean.ProdutionBean data) {
         final ArrayList<String> pr_picUrlList = new ArrayList<>();
         //内容设置
-        produceContent.setText("产品名称: " + data.getProductName() + "\n" +
+        String info=("产品名称: " + data.getProductName() + "\n" +
                 "品牌: " + data.getBrandName() + "\n" +
                 "产品等级: " + data.getProductGrade() + "\n" +
                 "生产企业: " + data.getProductionEnterprise() + "\n" +
                 "溯源码:  " + data.getOriginCode() + "\n" +
                 "批次号: " + data.getBatchCode() + "\n" +
                 "生产日期: " + data.getProductionDate() + "\n" +
-                "保质期: " + data.getExpireDate()
-        );
+                "保质期: " + data.getExpireDate()).replaceAll("null","");
+        produceContent.setText(info);
         //图片设置
         if (data.getImages() != null && data.getImages().size() != 0) {
             picProduceLl.setVisibility(View.VISIBLE);
@@ -151,11 +151,12 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
     @Override
     public void showTestInfo(BatchAllData.DataBean.QualityBean data) {
         final ArrayList<String> ts_picUrlList = new ArrayList<>();
-        testContent.setText("质检时间: " + data.getQualityTime() + "\n" +
+
+        String info = ("质检时间: " + data.getQualityTime() + "\n" +
                 "质检机构: " + data.getQualityOrganization() + "\n" +
                 "质检人: " + data.getQualityMan() + "\n" +
-                "质检结果判定标准: " + data.getQualityStandard()
-        );
+                "质检结果判定标准: " + data.getQualityStandard()).replaceAll("null", "");
+        testContent.setText(info);
 
         //图片设置
         if (data.getImages() != null && data.getImages().size() != 0) {
@@ -192,14 +193,15 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
     @Override
     public void showPlaceInfo(BatchAllData.DataBean.BaseBean data) {
         final ArrayList<String> bs_picUrlList = new ArrayList<>();
-        placeContent.setText(
-                "基地名称: " + data.getBaseName() + "\n" +
-                        "基地地址: " + data.getBaseAddress() + "\n" +
-                        "基地类型: " + data.getBaseType() + "\n" +
-                        "基地面积: " + data.getBaseArea() + "\n" +
-                        "建成时间: " + data.getBuiltTime() + "\n" +
-                        "资源情况: " + data.getSourceInfo()
-        );
+
+        String info = ("基地名称: " + data.getBaseName() + "\n" +
+                "基地地址: " + data.getBaseAddress() + "\n" +
+                "基地类型: " + data.getBaseType() + "\n" +
+                "基地面积: " + data.getBaseArea() + "\n" +
+                "建成时间: " + data.getBuiltTime() + "\n" +
+                "资源情况: " + data.getSourceInfo()).replaceAll("null", "");
+
+        placeContent.setText(info);
 
         //图片设置
         if (data.getImages() != null && data.getImages().size() != 0) {
@@ -234,16 +236,17 @@ public class PreviewActivity extends ActivityBase implements PreviewInterface {
     @Override
     public void showEnterpriseInfo(BatchAllData.DataBean.EnterpriseBean data) {
         final ArrayList<String> en_picUrlList = new ArrayList<>();
-        enterpriseContent.setText(
-                "企业名称: " + data.getEnterpriseName() + "\n" +
+        String info =
+                ("企业名称: " + data.getEnterpriseName() + "\n" +
                         "主营产品: " + data.getMainProduct() + "\n" +
                         "营业执照号码: " + data.getLicenseCode() + "\n" +
                         "联系电话: " + data.getLinkPhone() + "\n" +
                         "传真号码: " + data.getFaxNumber() + "\n" +
                         "联系地址: " + data.getLinkAddress() + "\n" +
                         "网址: " + data.getWebsite() + "\n" +
-                        "企业概况: " + data.getEnterpriseAbstract()
-        );
+                        "企业概况: " + data.getEnterpriseAbstract()).replaceAll("null", "");
+
+        enterpriseContent.setText(info);
         //图片设置
         if (data.getImages() != null && data.getImages().size() != 0) {
             picEnterpriseLl.setVisibility(View.VISIBLE);
